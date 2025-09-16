@@ -31,12 +31,12 @@
       padding: 50px;
     }
     h1 {
-      font-size: 2em;
+      font-size: 3.5em; /* pinalaki */
       margin-bottom: 20px;
     }
     .products, .contacts {
       margin: 30px 0;
-      font-size: 1.2em;
+      font-size: 2em; /* mas malaking text */
     }
     .products ul, .contacts ul {
       list-style: none;
@@ -49,6 +49,13 @@
     a:hover {
       text-decoration: underline;
     }
+    .logo {
+      margin-bottom: 30px;
+    }
+    .logo img {
+      width: 300px; /* laki ng logo */
+      border-radius: 10px;
+    }
   </style>
 </head>
 <body>
@@ -57,6 +64,11 @@
 
   <!-- Main Content -->
   <div class="content">
+    <!-- LOGO -->
+    <div class="logo">
+      <img src="logo.png" alt="My Logo">
+    </div>
+
     <h1>REV KEN X</h1>
     <div class="products">
       <h2>Products</h2>
@@ -76,7 +88,7 @@
     </div>
   </div>
 
-  <!-- Background Effect -->
+  <!-- Matrix Background Script -->
   <script>
     const canvas = document.getElementById('matrix');
     const ctx = canvas.getContext('2d');
@@ -84,7 +96,6 @@
     canvas.height = window.innerHeight;
     canvas.width = window.innerWidth;
 
-    // Custom characters = REVKENX
     const letters = "REVKENX";
     const fontSize = 14;
     const columns = canvas.width / fontSize;
@@ -112,4 +123,4 @@
     setInterval(draw, 35);
   </script>
 </body>
-  </html>
+</html>
