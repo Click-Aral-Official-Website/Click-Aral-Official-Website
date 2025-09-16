@@ -12,7 +12,7 @@
       font-family: monospace;
       overflow: hidden;
     }
-    .matrix {
+    canvas.matrix {
       position: fixed;
       top: 0;
       left: 0;
@@ -31,10 +31,102 @@
       padding: 50px;
     }
     h1 {
-      font-size: 3.5em; /* pinalaki */
+      font-size: 3.5em;
       margin-bottom: 20px;
     }
     .products, .contacts {
+      margin: 30px 0;
+      font-size: 2em;
+    }
+    .products ul, .contacts ul {
+      list-style: none;
+      padding: 0;
+    }
+    a {
+      color: #00ff00;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    .logo {
+      margin-bottom: 40px;
+    }
+    .logo img {
+      width: 400px; /* laki ng logo */
+      border-radius: 10px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Background -->
+  <canvas id="matrix" class="matrix"></canvas>
+
+  <!-- Main Content -->
+  <div class="content">
+    <!-- LOGO -->
+    <div class="logo">
+      <img src="logo.png" alt="My Logo">
+    </div>
+
+    <h1>REV KEN X</h1>
+
+    <div class="products">
+      <h2>Products</h2>
+      <ul>
+        <li>FILES REV K</li>
+        <li>FILES REV 1.0</li>
+        <li>FILES REV 2.0</li>
+      </ul>
+    </div>
+
+    <div class="contacts">
+      <h2>Contact Me</h2>
+      <ul>
+        <li>Email: <a href="mailto:revkenx76@gmail.com">revkenx76@gmail.com</a></li>
+        <li>Instagram: @_https.revx.ken</li>
+        <li>Facebook: <a href="https://www.facebook.com/share/1Acmkm2Lx2/" target="_blank">My Facebook</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Matrix Background Script -->
+  <script>
+    const canvas = document.getElementById('matrix');
+    const ctx = canvas.getContext('2d');
+
+    canvas.height = window.innerHeight;
+    canvas.width = window.innerWidth;
+
+    const letters = "01";
+    const fontSize = 14;
+    const columns = canvas.width / fontSize;
+
+    const drops = [];
+    for (let x = 0; x < columns; x++) drops[x] = 1;
+
+    function draw() {
+      ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      ctx.fillStyle = "#0F0";
+      ctx.font = fontSize + "px monospace";
+
+      for (let i = 0; i < drops.length; i++) {
+        const text = letters.charAt(Math.floor(Math.random() * letters.length));
+        ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+        if (drops[i] * fontSize > canvas.height && Math.random() > 0.975)
+          drops[i] = 0;
+
+        drops[i]++;
+      }
+    }
+
+    setInterval(draw, 33);
+  </script>
+</body>
+</html>    .products, .contacts {
       margin: 30px 0;
       font-size: 2em; /* mas malaking text */
     }
