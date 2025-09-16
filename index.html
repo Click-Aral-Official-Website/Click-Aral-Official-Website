@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Rev Ken X</title>
+  <title>REV KEN</title>
   <style>
     body {
       margin: 0;
@@ -34,11 +34,36 @@
       font-size: 3.5em;
       margin-bottom: 20px;
     }
-    .products, .contacts {
-      margin: 30px 0;
-      font-size: 2em;
+    h2 {
+      font-size: 2.5em;
+      margin-bottom: 20px;
+      text-shadow: 0 0 10px #00ff00;
     }
-    .products ul, .contacts ul {
+    .products {
+      margin: 30px 0;
+      font-size: 1.5em;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
+    .product-box {
+      border: 2px solid #00ff00;
+      padding: 20px;
+      width: 300px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px #00ff00;
+      transition: 0.3s;
+    }
+    .product-box:hover {
+      background: rgba(0, 255, 0, 0.1);
+      transform: scale(1.05);
+    }
+    .contacts {
+      margin: 30px 0;
+      font-size: 1.5em;
+    }
+    .contacts ul {
       list-style: none;
       padding: 0;
     }
@@ -73,6 +98,71 @@
 
     <div class="products">
       <h2>Products</h2>
+      <div class="product-box">FILES REV K</div>
+      <div class="product-box">FILES REV 1.0</div>
+      <div class="product-box">FILES REV 2.0</div>
+    </div>
+
+    <div class="contacts">
+      <h2>Contact Me</h2>
+      <ul>
+        <li>Email: <a href="mailto:revkenx76@gmail.com">revkenx76@gmail.com</a></li>
+        <li>Instagram: <a href="https://instagram.com/_https.revx.ken" target="_blank">@_https.revx.ken</a></li>
+        <li>Facebook: <a href="https://www.facebook.com/share/1Acmkm2Lx2/" target="_blank">My Facebook</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Matrix Background Script -->
+  <script>
+    const canvas = document.getElementById('matrix');
+    const ctx = canvas.getContext('2d');
+
+    canvas.height = window.innerHeight;
+    canvas.width = window.innerWidth;
+
+    const letters = "REVKENX";
+    const fontSize = 14;
+    const columns = canvas.width / fontSize;
+
+    const drops = [];
+    for (let x = 0; x < columns; x++) drops[x] = 1;
+
+    function draw() {
+      ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      ctx.fillStyle = "#0F0"; 
+      ctx.font = fontSize + "px monospace";
+
+      for (let i = 0; i < drops.length; i++) {
+        const text = letters.charAt(Math.floor(Math.random() * letters.length));
+        ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+        if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+          drops[i] = 0;
+        }
+        drops[i]++;
+      }
+    }
+
+    setInterval(draw, 35);
+  </script>
+</body>
+</html>  <!-- Background -->
+  <canvas id="matrix" class="matrix"></canvas>
+
+  <!-- Main Content -->
+  <div class="content">
+    <!-- LOGO -->
+    <div class="logo">
+      <img src="logo.png" alt="My Logo">
+    </div>
+
+    <h1>REV KEN X</h1>
+
+    <div class="products">
+      <h2>Products</h2>
       <ul>
         <li>FILES REV K</li>
         <li>FILES REV 1.0</li>
@@ -83,7 +173,7 @@
     <div class="contacts">
       <h2>Contact Me</h2>
       <ul>
-        <li>Email: <a href="mailto:kenxrev1998@gmail.com">revkenx76@gmail.com</a></li>
+        <li>Email: <a href="mailto:revxgng@gmail.com">revkenx76@gmail.com</a></li>
         <li>Instagram: @_https.kenxrev</li>
         <li>Facebook: <a href="https://www.facebook.com/share/1Acmkm2Lx2/" target="_blank">My Facebook</a></li>
       </ul>
