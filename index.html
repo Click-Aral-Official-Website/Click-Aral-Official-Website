@@ -75,10 +75,10 @@
       text-decoration: underline;
     }
     .logo {
-      margin-bottom: 40px;
+      margin: 40px 0;
     }
     .logo img {
-      width: 400px; /* laki ng logo */
+      width: 400px; /* parehong laki */
       border-radius: 10px;
     }
   </style>
@@ -89,9 +89,9 @@
 
   <!-- Main Content -->
   <div class="content">
-    <!-- LOGO -->
+    <!-- LOGO (TOP - PNG) -->
     <div class="logo">
-      <img src="logo.png" alt="My Logo">
+      <img src="logo-top.png" alt="Top Logo">
     </div>
 
     <h1>REV KEN OFFICIAL WEBSITE</h1>
@@ -111,6 +111,11 @@
         <li>Facebook: <a href="https://www.facebook.com/share/1Acmkm2Lx2/" target="_blank">My Facebook</a></li>
       </ul>
     </div>
+
+    <!-- LOGO (BOTTOM - JPEG) -->
+    <div class="logo">
+      <img src="logo-bottom.jpeg" alt="Bottom Logo">
+    </div>
   </div>
 
   <!-- Matrix Background Script -->
@@ -122,73 +127,6 @@
     canvas.width = window.innerWidth;
 
     const letters = "REVKENX";
-    const fontSize = 15;
-    const columns = canvas.width / fontSize;
-
-    const drops = [];
-    for (let x = 0; x < columns; x++) drops[x] = 1;
-
-    function draw() {
-      ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-      ctx.fillStyle = "#0F0"; 
-      ctx.font = fontSize + "px monospace";
-
-      for (let i = 0; i < drops.length; i++) {
-        const text = letters.charAt(Math.floor(Math.random() * letters.length));
-        ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-
-        if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
-          drops[i] = 0;
-        }
-        drops[i]++;
-      }
-    }
-
-    setInterval(draw, 35);
-  </script>
-</body>
-</html>  <!-- Background -->
-  <canvas id="matrix" class="matrix"></canvas>
-
-  <!-- Main Content -->
-  <div class="content">
-    <!-- LOGO -->
-    <div class="logo">
-      <img src="logo.jpeg" alt="My Logo">
-    </div>
-
-    <h1>REV KEN OFFICIAL WEBSITE</h1>
-
-    <div class="products">
-      <h2>Products</h2>
-      <ul>
-        <li>FILES REV K-SPAMMER</li>
-        <li>FILES REV 1.0-NUKER</li>
-        <li>FILES REV 2.0</li>
-      </ul>
-    </div>
-
-    <div class="contacts">
-      <h2>Contact Me</h2>
-      <ul>
-        <li>Email: <a href="mailto:revxgng@gmail.com">revxgng@gmail.com</a></li>
-        <li>Instagram: @_https.kenxrev</li>
-        <li>Facebook: <a href="https://www.facebook.com/share/1Acmkm2Lx2/" target="_blank">My Facebook</a></li>
-      </ul>
-    </div>
-  </div>
-
-  <!-- Matrix Background Script -->
-  <script>
-    const canvas = document.getElementById('matrix');
-    const ctx = canvas.getContext('2d');
-
-    canvas.height = window.innerHeight;
-    canvas.width = window.innerWidth;
-
-    const letters = "01";
     const fontSize = 15;
     const columns = canvas.width / fontSize;
 
@@ -202,95 +140,6 @@
       ctx.fillStyle = "#0F0";
       ctx.font = fontSize + "px monospace";
 
-      for (let i = 0; i < drops.length; i++) {
-        const text = letters.charAt(Math.floor(Math.random() * letters.length));
-        ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-
-        if (drops[i] * fontSize > canvas.height && Math.random() > 0.975)
-          drops[i] = 0;
-
-        drops[i]++;
-      }
-    }
-
-    setInterval(draw, 33);
-  </script>
-</body>
-</html>    .products, .contacts {
-      margin: 30px 0;
-      font-size: 2em; /* mas malaking text */
-    }
-    .products ul, .contacts ul {
-      list-style: none;
-      padding: 0;
-    }
-    a {
-      color: #00ff00;
-      text-decoration: none;
-    }
-    a:hover {
-      text-decoration: underline;
-    }
-    .logo {
-      margin-bottom: 30px;
-    }
-    .logo img {
-      width: 300px; /* laki ng logo */
-      border-radius: 10px;
-    }
-  </style>
-</head>
-<body>
-  <!-- Background -->
-  <canvas id="matrix" class="matrix"></canvas>
-
-  <!-- Main Content -->
-  <div class="content">
-    <!-- LOGO -->
-    <div class="logo">
-      <img src="logo.jpeg" alt="My Logo">
-    </div>
-
-    <h1>REV KEN OFFICIAL WEBSITE</h1>
-    <div class="products">
-      <h2>Products</h2>
-      <ul>
-        <li>FILES REV K-SPAMMER</li>
-        <li>FILES REV 1.0-NUKER</li>
-        <li>FILES REV 2.0</li>
-      </ul>
-    </div>
-    <div class="contacts">
-      <h2>Contact Me</h2>
-      <ul>
-        <li>Email: <a href="mailto:revxgng@gmail.com">revxgng@gmail.com</a></li>
-        <li>Instagram: <a href="https://instagram.com/_https.revx.ken" target="_blank">@_https.revx.ken</a></li>
-        <li>Facebook: <a href="https://www.facebook.com/share/1Acmkm2Lx2/" target="_blank">My Facebook</a></li>
-      </ul>
-    </div>
-  </div>
-
-  <!-- Matrix Background Script -->
-  <script>
-    const canvas = document.getElementById('matrix');
-    const ctx = canvas.getContext('2d');
-
-    canvas.height = window.innerHeight;
-    canvas.width = window.innerWidth;
-
-    const letters = "REVKENX";
-    const fontSize = 15;
-    const columns = canvas.width / fontSize;
-
-    const drops = [];
-    for (let x = 0; x < columns; x++) drops[x] = 1;
-
-    function draw() {
-      ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-      ctx.fillStyle = "#0F0"; 
-      ctx.font = fontSize + "px monospace";
       for (let i = 0; i < drops.length; i++) {
         const text = letters.charAt(Math.floor(Math.random() * letters.length));
         ctx.fillText(text, i * fontSize, drops[i] * fontSize);
