@@ -22,6 +22,7 @@
       border-radius: 20px;
       display: inline-block;
       margin-top: 40px;
+      max-width: 700px; /* para may space yung HOF logos */
     }
     h1.typing-title {
       font-size: 3em;
@@ -141,8 +142,10 @@
     .hall-of-fame {
       display: flex;
       justify-content: center;
-      gap: 50px;
+      align-items: center;
+      gap: 40px;
       margin-top: 30px;
+      flex-wrap: nowrap; /* force horizontal */
     }
     .hof-item {
       text-align: center;
@@ -188,6 +191,23 @@
     </a>
     <div class="glitch">XKXNX</div>
 
+    <!-- Hall of Fame Section (inside the box, under your logo) -->
+<h2 style="margin-top:30px; text-shadow: 0 0 15px red;">Anakies Givenchy</h2>
+<div class="hall-of-fame">
+  <div class="hof-item">
+    <img src="cris.png" alt="Cris">
+    <p>Cris Givenchy</p>
+  </div>
+  <div class="hof-item">
+    <img src="pita.jpg" alt="Pita">
+    <p>Pita Givenchy</p>
+  </div>
+  <div class="hof-item">
+    <img src="bishop.png" alt="Bishop">
+    <p>Bishop Quinn Givenchy</p>
+  </div>
+</div>
+
     <!-- Typing Quotes -->
     <div class="typing">" Do you love xkxnx.... ? "</div>
 
@@ -206,22 +226,6 @@
       </audio>
       <button onclick="document.getElementById('bgMusic').play()">▶ Play</button>
       <button onclick="document.getElementById('bgMusic').pause()">⏸ Stop</button>
-    </div>
-
-    <!-- Hall of Fame Section (inside the box, under your logo) -->
-    <div class="Anakies Givenchy">
-      <div class="hof-item">
-        <img src="cris.png" alt="Cris">
-        <p>Cris Givenchy</p>
-      </div>
-      <div class="hof-item">
-        <img src="pita.jpg" alt="Pita">
-        <p>Pita Givenchy</p>
-      </div>
-      <div class="hof-item">
-        <img src="bishop.png" alt="Bishop">
-        <p>Bishop Quinn Givenchy</p>
-      </div>
     </div>
 
   </div>
