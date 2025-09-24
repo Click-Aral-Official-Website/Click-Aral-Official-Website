@@ -141,10 +141,9 @@
     .hall-of-fame {
       display: flex;
       justify-content: center;
-      gap: 40px;
-      flex-wrap: wrap;
+      gap: 60px;
       margin: 40px auto;
-      max-width: 900px;
+      flex-wrap: nowrap;
     }
     .hof-item {
       text-align: center;
@@ -208,27 +207,31 @@
       <button onclick="document.getElementById('bgMusic').play()">▶ Play</button>
       <button onclick="document.getElementById('bgMusic').pause()">⏸ Stop</button>
     </div>
-  </div>
 
-  <!-- Hall of Fame Section -->
-  <div class="hall-of-fame">
-    <div class="hof-item">
-      <img src="cris.png" alt="Cris Givenchy">
-      <p>cris</p>
+    <!-- Hall of Fame Section (Landscape under your logo) -->
+    <div class="Anakies Givenchy">
+      <div class="hof-item">
+        <img src="cris.png" alt="Cris Givenchy">
+        <p>cris</p>
+      </div>
+      <div class="hof-item">
+        <img src="pita.jpg" alt="Pita Givenchy">
+        <p>pita</p>
+      </div>
+      <div class="hof-item">
+        <img src="bishop.png" alt="Bishop Quinn Givenchy">
+        <p>bishop</p>
+      </div>
     </div>
-    <div class="hof-item">
-      <img src="pita.jpg" alt="Pita Givenchy">
-      <p>pita</p>
-    </div>
-    <div class="hof-item">
-      <img src="bishop.png" alt="Bishop Quinn Givenchy">
-      <p>bishop</p>
-    </div>
+
   </div>
 
   <script>
+    // CountAPI namespace para stable data
+    const NAMESPACE = "xkxnx-official-world";
+
     // Viewer Counter (CountAPI)
-    fetch("https://api.countapi.xyz/hit/xkxnx/visits")
+    fetch(`https://api.countapi.xyz/hit/${NAMESPACE}/visits`)
       .then(res => res.json())
       .then(data => {
         document.getElementById("viewCount").innerText = data.value;
@@ -238,7 +241,7 @@
     const heartBtn = document.getElementById("heartBtn");
     const heartCount = document.getElementById("heartCount");
 
-    fetch("https://api.countapi.xyz/get/xkxnx/hearts")
+    fetch(`https://api.countapi.xyz/get/${NAMESPACE}/hearts`)
       .then(res => res.json())
       .then(data => {
         heartCount.innerText = data.value || 0;
@@ -246,7 +249,7 @@
 
     heartBtn.addEventListener("click", () => {
       heartBtn.classList.add("liked");
-      fetch("https://api.countapi.xyz/hit/xkxnx/hearts")
+      fetch(`https://api.countapi.xyz/hit/${NAMESPACE}/hearts`)
         .then(res => res.json())
         .then(data => {
           heartCount.innerText = data.value;
