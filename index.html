@@ -2,42 +2,37 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>REV KEN OFFICIAL WEBSITE</title>
+  <title>XKXNX OFFICIAL WORLD...</title>
   <style>
     body {
       margin: 0;
       padding: 0;
-      background: black;
+      background: url("mybg.gif") no-repeat center center fixed; /* <-- GIF background dito */
+      background-size: cover;
       color: #00ff00;
       font-family: monospace;
-      overflow: hidden;
-    }
-    canvas.matrix {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      color: #00ff00;
-      font-size: 15px;
-      line-height: 15px;
-      opacity: 0.2;
-      pointer-events: none;
+      overflow-x: hidden;
+      overflow-y: auto;
+      text-align: center;
     }
     .content {
       position: relative;
       z-index: 2;
-      text-align: center;
       padding: 50px;
+      background: rgba(0, 0, 0, 0.6); /* translucent box para mas readable text */
+      border-radius: 20px;
+      display: inline-block;
+      margin-top: 40px;
     }
     h1 {
       font-size: 3.5em;
       margin-bottom: 20px;
+      text-shadow: 0 0 10px #00ff00;
     }
     h2 {
       font-size: 2.5em;
       margin-bottom: 20px;
-      text-shadow: 0 0 10px #00ff00;
+      text-shadow: 0 0 15px #00ff00;
     }
     .products {
       margin: 30px 0;
@@ -74,27 +69,55 @@
     a:hover {
       text-decoration: underline;
     }
-    .logo {
-      margin: 40px 0;
+    /* Circle Logo */
+    .circle-logo {
+      margin: 40px auto;
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      overflow: hidden;
+      box-shadow: 0 0 20px #00ff00;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
-    .logo img {
-      width: 400px; /* parehong laki */
-      border-radius: 10px;
+    .circle-logo:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 40px #00ff00;
+    }
+    .circle-logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    /* Typing effect */
+    .typing {
+      font-size: 1.5em;
+      margin-top: 30px;
+      color: #00ff00;
+      border-right: 2px solid #00ff00;
+      white-space: nowrap;
+      overflow: hidden;
+      width: 30ch; /* adjust depende sa haba ng text */
+      animation: typing 5s steps(30), blink .75s step-end infinite;
+    }
+    @keyframes typing {
+      from { width: 0 }
+      to { width: 30ch }
+    }
+    @keyframes blink {
+      50% { border-color: transparent }
     }
   </style>
 </head>
 <body>
-  <!-- Background -->
-  <canvas id="matrix" class="matrix"></canvas>
 
   <!-- Main Content -->
   <div class="content">
     <!-- LOGO (TOP - PNG) -->
     <div class="logo">
-      <img src="logo-top.png" alt="Top Logo">
+      <img src="logo-top.png" alt="Top Logo" width="300">
     </div>
 
-    <h1>REV KEN OFFICIAL WEBSITE</h1>
+    <h1>XKXNX OFFICIAL WORLD...</h1>
 
     <div class="products">
       <h2>Products</h2>
@@ -112,46 +135,16 @@
       </ul>
     </div>
 
-    <!-- LOGO (BOTTOM - JPEG) -->
-    <div class="logo">
-      <img src="logo-bottom.jpeg" alt="Bottom Logo">
-    </div>
+    <!-- Circle Logo clickable to Discord -->
+    <a href="https://discord.com/users/768383488449183745" target="_blank">
+      <div class="circle-logo">
+        <img src="9d659309-8e2d-4367-b206-c1dba37ceb3c.png" alt="Discord Logo">
+      </div>
+    </a>
+
+    <!-- Typing Quotes -->
+    <div class="typing">" Do you love xkxnx.... ? "</div>
   </div>
 
-  <!-- Matrix Background Script -->
-  <script>
-    const canvas = document.getElementById('matrix');
-    const ctx = canvas.getContext('2d');
-
-    canvas.height = window.innerHeight;
-    canvas.width = window.innerWidth;
-
-    const letters = "REVKENX";
-    const fontSize = 25;
-    const columns = canvas.width / fontSize;
-
-    const drops = [];
-    for (let x = 0; x < columns; x++) drops[x] = 1;
-
-    function draw() {
-      ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-      ctx.fillStyle = "#0F0";
-      ctx.font = fontSize + "px monospace";
-
-      for (let i = 0; i < drops.length; i++) {
-        const text = letters.charAt(Math.floor(Math.random() * letters.length));
-        ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-
-        if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
-          drops[i] = 0;
-        }
-        drops[i]++;
-      }
-    }
-
-    setInterval(draw, 35);
-  </script>
 </body>
 </html>
