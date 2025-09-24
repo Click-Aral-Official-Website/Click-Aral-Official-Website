@@ -3,13 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <title>XKXNX OFFICIAL WORLD...</title>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="favicon.png">
+
   <style>
     body {
       margin: 0;
       padding: 0;
       background: url("mybg.gif") no-repeat center center fixed; /* GIF background */
       background-size: cover;
-      color: white; /* text color white */
+      color: #ffffff;
       font-family: monospace;
       overflow-x: hidden;
       overflow-y: auto;
@@ -19,7 +23,7 @@
       position: relative;
       z-index: 2;
       padding: 50px;
-      background: rgba(0, 0, 0, 0.7);
+      background: rgba(0, 0, 0, 0.6);
       border-radius: 20px;
       display: inline-block;
       margin-top: 40px;
@@ -27,8 +31,8 @@
     h1.typing-title {
       font-size: 3.5em;
       margin-bottom: 20px;
-      text-shadow: 0 0 10px white;
-      border-right: 2px solid white;
+      text-shadow: 0 0 10px #ffffff;
+      border-right: 2px solid #ffffff;
       white-space: nowrap;
       overflow: hidden;
       width: 32ch;
@@ -39,7 +43,7 @@
     h2 {
       font-size: 2.5em;
       margin-bottom: 20px;
-      text-shadow: 0 0 15px white;
+      text-shadow: 0 0 15px #ffffff;
     }
     .products {
       margin: 30px 0;
@@ -50,13 +54,12 @@
       gap: 20px;
     }
     .product-box {
-      border: 2px solid white;
+      border: 2px solid #ffffff;
       padding: 20px;
       width: 300px;
       border-radius: 10px;
-      box-shadow: 0 0 15px black;
+      box-shadow: 0 0 15px #ffffff;
       transition: 0.3s;
-      color: white;
     }
     .product-box:hover {
       background: rgba(255, 255, 255, 0.1);
@@ -71,7 +74,7 @@
       padding: 0;
     }
     a {
-      color: white;
+      color: #ffffff;
       text-decoration: none;
     }
     a:hover {
@@ -79,30 +82,29 @@
     }
     /* Circle Logo */
     .circle-logo {
-      margin: 40px auto;
+      margin: 40px auto 10px auto;
       width: 200px;
       height: 200px;
       border-radius: 50%;
       overflow: hidden;
-      box-shadow: 0 0 20px black;
-      border: 3px solid white;
+      box-shadow: 0 0 20px #ffffff;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
     .circle-logo:hover {
       transform: scale(1.1);
-      box-shadow: 0 0 40px white;
+      box-shadow: 0 0 40px #ffffff;
     }
     .circle-logo img {
       width: 100%;
       height: 100%;
       object-fit: cover;
     }
-    /* Typing effect generic */
+    /* Typing effect */
     .typing {
       font-size: 1.5em;
       margin-top: 30px;
-      color: white;
-      border-right: 2px solid white;
+      color: #ffffff;
+      border-right: 2px solid #ffffff;
       white-space: nowrap;
       overflow: hidden;
       width: 30ch;
@@ -121,27 +123,31 @@
     @keyframes blink {
       50% { border-color: transparent }
     }
-    /* Music Buttons */
-    .music-controls {
-      margin-top: 20px;
+    /* Glitch Text Effect */
+    .glitch {
+      font-size: 2em;
+      font-weight: bold;
+      color: red;
+      position: relative;
+      animation: glitch 1s infinite;
     }
-    .music-controls button {
-      background: black;
-      border: 2px solid white;
-      color: white;
-      padding: 10px 20px;
-      margin: 5px;
-      border-radius: 10px;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-    .music-controls button:hover {
-      background: rgba(255,255,255,0.2);
-      transform: scale(1.05);
+    @keyframes glitch {
+      0% { text-shadow: 2px 0 red, -2px 0 #000; }
+      20% { text-shadow: -2px -2px red, 2px 2px #000; }
+      40% { text-shadow: 2px 2px red, -2px -2px #000; }
+      60% { text-shadow: -2px 2px red, 2px -2px #000; }
+      80% { text-shadow: 2px -2px red, -2px 2px #000; }
+      100% { text-shadow: 2px 0 red, -2px 0 #000; }
     }
   </style>
 </head>
 <body>
+
+  <!-- Background Music with controls -->
+  <audio id="bg-music" controls autoplay loop>
+    <source src="music.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
 
   <!-- Main Content -->
   <div class="content">
@@ -155,63 +161,32 @@
 
     <div class="products">
       <h2>Products</h2>
-      <div class="product-box">FILES 1.0</div>
-      <div class="product-box">FILES 2.0</div>
-      <div class="product-box">FILES 3.0</div>
+      <div class="product-box">FILES REV K-SPAMMER</div>
+      <div class="product-box">FILES REV 1.0-NUKER</div>
+      <div class="product-box">FILES REV 2.0</div>
     </div>
 
     <div class="contacts">
       <h2>Contact Me</h2>
       <ul>
-        <li>Email: <a href="mailto:xkxnxdex@gmail.com">xkxnxdex@gmail.com</a></li>
-        <li>Instagram: <a href="https://instagram.com/_https.xkxnx" target="_blank">@_https.xkxnx</a></li>
-        <li>Facebook: <a href="https://www.facebook.com/share/1Acmkm2Lx2/" target="_blank">My Facebook</a></li>
+        <li>Email: <a href="mailto:revxgng@gmail.com">revxgng@gmail.com</a></li>
+        <li>Instagram: <a href="https://instagram.com/_https.revx.ken" target="_blank">@_https.revx.ken</a></li>
       </ul>
     </div>
 
     <!-- Circle Logo clickable to Discord -->
     <a href="https://discord.com/users/768383488449183745" target="_blank">
       <div class="circle-logo">
-        <img src="mylogo.png" alt="My Custom Logo">
+        <img src="logo-bottom.png" alt="My Custom Logo">
       </div>
     </a>
 
+    <!-- Glitch Name -->
+    <div class="glitch">XKXNX</div>
+
     <!-- Typing Quotes -->
     <div class="typing">" Do you love xkxnx.... ? "</div>
-
-    <!-- Music Controls -->
-    <div class="music-controls">
-      <button onclick="playAudio()">▶ Play Music</button>
-      <button onclick="stopAudio()">⏹ Stop Music</button>
-    </div>
   </div>
-
-  <!-- YouTube Hidden Player -->
-  <div style="display:none;">
-    <iframe id="ytplayer" width="0" height="0"
-      src="https://www.youtube.com/embed/iKfMspsKmY8?enablejsapi=1"
-      frameborder="0"></iframe>
-  </div>
-
-  <script>
-    // YouTube API
-    let player;
-    function onYouTubeIframeAPIReady() {
-      player = new YT.Player('ytplayer');
-    }
-    function playAudio() {
-      if (player) player.playVideo();
-    }
-    function stopAudio() {
-      if (player) player.stopVideo();
-    }
-
-    // Load YouTube API script
-    let tag = document.createElement('script');
-    tag.src = "https://www.youtube.com/iframe_api";
-    let firstScriptTag = document.getElementsByTagName('script')[0];
-    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-  </script>
 
 </body>
 </html>
