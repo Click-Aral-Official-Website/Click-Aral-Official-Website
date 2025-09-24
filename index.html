@@ -3,35 +3,31 @@
 <head>
   <meta charset="UTF-8">
   <title>XKXNX OFFICIAL WORLD...</title>
-  <!-- Favicon -->
-  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="icon" type="image/png" href="favic.png"> <!-- Favicon -->
   <style>
     body {
       margin: 0;
       padding: 0;
       background: url("mybg.gif") no-repeat center center fixed;
       background-size: cover;
-      color: #ffffff;
+      color: #fff;
       font-family: monospace;
-      overflow-x: hidden;
-      overflow-y: auto;
       text-align: center;
     }
     .content {
       position: relative;
       z-index: 2;
-      padding: 50px;
+      padding: 30px;
       background: rgba(0, 0, 0, 0.6);
       border-radius: 20px;
       display: inline-block;
       margin-top: 40px;
     }
-    /* Typing Title */
     h1.typing-title {
-      font-size: 3.5em;
+      font-size: 3em;
       margin-bottom: 20px;
-      text-shadow: 0 0 10px #ffffff;
-      border-right: 2px solid #ffffff;
+      text-shadow: 0 0 10px red;
+      border-right: 2px solid red;
       white-space: nowrap;
       overflow: hidden;
       width: 32ch;
@@ -40,40 +36,29 @@
       animation: typingTitle 5s steps(32), blink .75s step-end infinite;
     }
     h2 {
-      font-size: 2.5em;
+      font-size: 2em;
       margin-bottom: 20px;
-      text-shadow: 0 0 15px #ffffff;
+      text-shadow: 0 0 15px white;
     }
-    .products {
-      margin: 30px 0;
-      font-size: 1.5em;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 20px;
+    .products, .contacts {
+      margin: 20px 0;
+      font-size: 1.2em;
     }
     .product-box {
-      border: 2px solid #ffffff;
-      padding: 20px;
-      width: 300px;
+      border: 2px solid white;
+      padding: 15px;
+      width: 200px;
       border-radius: 10px;
-      box-shadow: 0 0 15px #ffffff;
+      box-shadow: 0 0 10px white;
       transition: 0.3s;
+      margin: 10px auto;
     }
     .product-box:hover {
-      background: rgba(255, 255, 255, 0.1);
+      background: rgba(255,255,255,0.1);
       transform: scale(1.05);
     }
-    .contacts {
-      margin: 30px 0;
-      font-size: 1.5em;
-    }
-    .contacts ul {
-      list-style: none;
-      padding: 0;
-    }
     a {
-      color: #ffffff;
+      color: #fff;
       text-decoration: none;
     }
     a:hover {
@@ -81,78 +66,55 @@
     }
     /* Circle Logo */
     .circle-logo {
-      margin: 40px auto 10px auto;
-      width: 200px;
-      height: 200px;
+      margin: 20px auto;
+      width: 120px;
+      height: 120px;
       border-radius: 50%;
       overflow: hidden;
-      box-shadow: 0 0 20px #ffffff;
+      box-shadow: 0 0 15px red;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
     .circle-logo:hover {
       transform: scale(1.1);
-      box-shadow: 0 0 40px #ffffff;
+      box-shadow: 0 0 30px red;
     }
     .circle-logo img {
       width: 100%;
       height: 100%;
       object-fit: cover;
     }
-    /* Glitch Name */
+    /* Glitch Effect for Name */
     .glitch {
-      font-size: 2em;
-      font-weight: bold;
+      font-size: 1.5em;
       color: red;
       position: relative;
-      display: inline-block;
+      animation: glitch 1s infinite;
       margin-top: 10px;
     }
-    .glitch::before, .glitch::after {
-      content: attr(data-text);
-      position: absolute;
-      left: 0;
-      width: 100%;
-      overflow: hidden;
-      clip: rect(0, 900px, 0, 0);
+    @keyframes glitch {
+      0% { text-shadow: 2px 2px red; }
+      20% { text-shadow: -2px -2px #ff0000; }
+      40% { text-shadow: 2px -2px #ff4444; }
+      60% { text-shadow: -2px 2px #ff0000; }
+      80% { text-shadow: 2px 2px #ff2222; }
+      100% { text-shadow: none; }
     }
-    .glitch::before {
-      animation: glitchTop 2s infinite linear alternate-reverse;
-      color: #ff0000;
-    }
-    .glitch::after {
-      animation: glitchBottom 2s infinite linear alternate-reverse;
-      color: #ff3333;
-    }
-    @keyframes glitchTop {
-      0% { clip: rect(0, 9999px, 0, 0); }
-      20% { clip: rect(0, 9999px, 50px, 0); transform: translate(-5px, -5px); }
-      40% { clip: rect(0, 9999px, 0, 0); }
-      60% { clip: rect(0, 9999px, 40px, 0); transform: translate(5px, 5px); }
-      100% { clip: rect(0, 9999px, 0, 0); }
-    }
-    @keyframes glitchBottom {
-      0% { clip: rect(0, 9999px, 0, 0); }
-      20% { clip: rect(50px, 9999px, 100px, 0); transform: translate(5px, 5px); }
-      40% { clip: rect(0, 9999px, 0, 0); }
-      60% { clip: rect(30px, 9999px, 80px, 0); transform: translate(-5px, -5px); }
-      100% { clip: rect(0, 9999px, 0, 0); }
-    }
-    /* Typing effect generic */
+    /* Typing effect */
     .typing {
-      font-size: 1.5em;
-      margin-top: 30px;
-      color: #ffffff;
-      border-right: 2px solid #ffffff;
+      font-size: 1.2em;
+      margin-top: 20px;
+      color: #fff;
+      border-right: 2px solid #fff;
       white-space: nowrap;
       overflow: hidden;
-      width: 30ch;
+      width: 25ch;
       margin-left: auto;
       margin-right: auto;
-      animation: typing 5s steps(30), blink .75s step-end infinite;
+      animation: typing 5s steps(25), blink .75s step-end infinite;
     }
     @keyframes typing {
       from { width: 0 }
-      to { width: 30ch }
+      to { width: 25ch }
     }
     @keyframes typingTitle {
       from { width: 0 }
@@ -161,41 +123,45 @@
     @keyframes blink {
       50% { border-color: transparent }
     }
-    /* Music Controls */
-    .music-controls {
-      margin-top: 20px;
-    }
-    .music-controls button {
-      background: black;
-      color: white;
-      border: 1px solid white;
-      padding: 10px 20px;
-      margin: 5px;
+    /* Heart Button */
+    .heart {
+      font-size: 2em;
       cursor: pointer;
-      border-radius: 5px;
+      color: #aaa;
+      transition: color 0.3s;
     }
-    .music-controls button:hover {
-      background: white;
-      color: black;
+    .heart.liked {
+      color: red;
+    }
+    .stats {
+      margin-top: 20px;
+      font-size: 1em;
+    }
+    /* Hall of Fame */
+    .hall-of-fame {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      flex-wrap: wrap;
+      margin-top: 40px;
+    }
+    .hof-item {
+      text-align: center;
+    }
+    .hof-item img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      box-shadow: 0 0 10px white;
+    }
+    .hof-item p {
+      margin-top: 10px;
     }
   </style>
 </head>
 <body>
 
-  <!-- Background Music with Play/Stop -->
-  <audio id="bg-music" loop>
-    <source src="music.mp3" type="audio/mpeg">
-    Your browser does not support the audio element.
-  </audio>
-
-  <!-- Main Content -->
   <div class="content">
-    <!-- LOGO (TOP - PNG) -->
-    <div class="logo">
-      <img src="logo-top.png" alt="Top Logo" width="300">
-    </div>
-
-    <!-- Typing Title -->
     <h1 class="typing-title">XKXNX OFFICIAL WORLD...</h1>
 
     <div class="products">
@@ -219,18 +185,62 @@
         <img src="mylogo.png" alt="My Custom Logo">
       </div>
     </a>
-    <!-- Glitch Name -->
-    <div class="glitch" data-text="XKXNX">XKXNX</div>
+    <div class="glitch">XKXNX</div>
 
     <!-- Typing Quotes -->
     <div class="typing">" Do you love xkxnx.... ? "</div>
 
-    <!-- Music Controls -->
-    <div class="music-controls">
-      <button onclick="document.getElementById('bg-music').play()">▶ Play Music</button>
-      <button onclick="document.getElementById('bg-music').pause()">⏸ Stop Music</button>
+    <!-- Heart + View Counter -->
+    <div class="stats">
+      <span id="heartBtn" class="heart">&#10084;</span>
+      <span id="heartCount">0</span> Hearts <br>
+      👁 <span id="viewCount">0</span> Views
     </div>
   </div>
+
+  <!-- Hall of Fame Section -->
+  <div class="Anakies Givenchy">
+    <div class="hof-item">
+      <img src="cris.png" alt="Cris Givenchy">
+      <p>cris</p>
+    </div>
+    <div class="hof-item">
+      <img src="pita.jpg" alt="Pita Givenchy">
+      <p>pita</p>
+    </div>
+    <div class="hof-item">
+      <img src="bishop.png" alt="Bishop Givenchy">
+      <p>bishop</p>
+    </div>
+  </div>
+
+  <script>
+    // Viewer Counter (CountAPI)
+    fetch("https://api.countapi.xyz/hit/xkxnx/visits")
+      .then(res => res.json())
+      .then(data => {
+        document.getElementById("viewCount").innerText = data.value;
+      });
+
+    // Heart Counter
+    const heartBtn = document.getElementById("heartBtn");
+    const heartCount = document.getElementById("heartCount");
+
+    fetch("https://api.countapi.xyz/get/xkxnx/hearts")
+      .then(res => res.json())
+      .then(data => {
+        heartCount.innerText = data.value || 0;
+      });
+
+    heartBtn.addEventListener("click", () => {
+      heartBtn.classList.add("liked");
+      fetch("https://api.countapi.xyz/hit/xkxnx/hearts")
+        .then(res => res.json())
+        .then(data => {
+          heartCount.innerText = data.value;
+        });
+    });
+  </script>
 
 </body>
 </html>
