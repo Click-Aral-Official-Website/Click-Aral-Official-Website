@@ -7,7 +7,7 @@
     body {
       margin: 0;
       padding: 0;
-      background: url("mybg.gif") no-repeat center center fixed; /* <-- GIF background dito */
+      background: url("mybg.gif") no-repeat center center fixed; /* GIF background */
       background-size: cover;
       color: #00ff00;
       font-family: monospace;
@@ -19,15 +19,22 @@
       position: relative;
       z-index: 2;
       padding: 50px;
-      background: rgba(0, 0, 0, 0.6); /* translucent box para mas readable text */
+      background: rgba(0, 0, 0, 0.6);
       border-radius: 20px;
       display: inline-block;
       margin-top: 40px;
     }
-    h1 {
+    h1.typing-title {
       font-size: 3.5em;
       margin-bottom: 20px;
       text-shadow: 0 0 10px #00ff00;
+      border-right: 2px solid #00ff00;
+      white-space: nowrap;
+      overflow: hidden;
+      width: 32ch;
+      margin-left: auto;
+      margin-right: auto;
+      animation: typingTitle 5s steps(32), blink .75s step-end infinite;
     }
     h2 {
       font-size: 2.5em;
@@ -88,7 +95,7 @@
       height: 100%;
       object-fit: cover;
     }
-    /* Typing effect */
+    /* Typing effect generic */
     .typing {
       font-size: 1.5em;
       margin-top: 30px;
@@ -96,12 +103,18 @@
       border-right: 2px solid #00ff00;
       white-space: nowrap;
       overflow: hidden;
-      width: 30ch; /* adjust depende sa haba ng text */
+      width: 30ch;
+      margin-left: auto;
+      margin-right: auto;
       animation: typing 5s steps(30), blink .75s step-end infinite;
     }
     @keyframes typing {
       from { width: 0 }
       to { width: 30ch }
+    }
+    @keyframes typingTitle {
+      from { width: 0 }
+      to { width: 32ch }
     }
     @keyframes blink {
       50% { border-color: transparent }
@@ -110,6 +123,12 @@
 </head>
 <body>
 
+  <!-- Background Music (YouTube autoplay hidden) -->
+  <iframe width="0" height="0" 
+    src="https://youtu.be/muHqXxLo5Lg?si=YpalOf5FfoUuYzfb" 
+    frameborder="0" allow="autoplay">
+  </iframe>
+
   <!-- Main Content -->
   <div class="content">
     <!-- LOGO (TOP - PNG) -->
@@ -117,7 +136,8 @@
       <img src="logo-top.png" alt="Top Logo" width="300">
     </div>
 
-    <h1>XKXNX OFFICIAL WORLD...</h1>
+    <!-- Typing Title -->
+    <h1 class="typing-title">XKXNX OFFICIAL WORLD...</h1>
 
     <div class="products">
       <h2>Products</h2>
