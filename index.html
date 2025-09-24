@@ -3,15 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <title>XKXNX OFFICIAL WORLD...</title>
-
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="favicon.png">
-
   <style>
     body {
       margin: 0;
       padding: 0;
-      background: url("mybg.gif") no-repeat center center fixed; /* GIF background */
+      background: url("mybg.gif") no-repeat center center fixed;
       background-size: cover;
       color: #ffffff;
       font-family: monospace;
@@ -28,6 +26,7 @@
       display: inline-block;
       margin-top: 40px;
     }
+    /* Typing Title */
     h1.typing-title {
       font-size: 3.5em;
       margin-bottom: 20px;
@@ -99,199 +98,46 @@
       height: 100%;
       object-fit: cover;
     }
-    /* Typing effect */
-    .typing {
-      font-size: 1.5em;
-      margin-top: 30px;
-      color: #ffffff;
-      border-right: 2px solid #ffffff;
-      white-space: nowrap;
-      overflow: hidden;
-      width: 30ch;
-      margin-left: auto;
-      margin-right: auto;
-      animation: typing 5s steps(30), blink .75s step-end infinite;
-    }
-    @keyframes typing {
-      from { width: 0 }
-      to { width: 30ch }
-    }
-    @keyframes typingTitle {
-      from { width: 0 }
-      to { width: 32ch }
-    }
-    @keyframes blink {
-      50% { border-color: transparent }
-    }
-    /* Glitch Text Effect */
+    /* Glitch Name */
     .glitch {
       font-size: 2em;
       font-weight: bold;
       color: red;
       position: relative;
-      animation: glitch 1s infinite;
-    }
-    @keyframes glitch {
-      0% { text-shadow: 2px 0 red, -2px 0 #000; }
-      20% { text-shadow: -2px -2px red, 2px 2px #000; }
-      40% { text-shadow: 2px 2px red, -2px -2px #000; }
-      60% { text-shadow: -2px 2px red, 2px -2px #000; }
-      80% { text-shadow: 2px -2px red, -2px 2px #000; }
-      100% { text-shadow: 2px 0 red, -2px 0 #000; }
-    }
-  </style>
-</head>
-<body>
-
-  <!-- Background Music with controls -->
-  <audio id="bg-music" controls autoplay loop>
-    <source src="music.mp3" type="audio/mpeg">
-    Your browser does not support the audio element.
-  </audio>
-
-  <!-- Main Content -->
-  <div class="content">
-    <!-- LOGO (TOP - PNG) -->
-    <div class="logo">
-      <img src="logo-top.png" alt="Top Logo" width="300">
-    </div>
-
-    <!-- Typing Title -->
-    <h1 class="typing-title">XKXNX OFFICIAL WORLD...</h1>
-
-    <div class="products">
-      <h2>Products</h2>
-      <div class="product-box">FILES REV K-SPAMMER</div>
-      <div class="product-box">FILES REV 1.0-NUKER</div>
-      <div class="product-box">FILES REV 2.0</div>
-    </div>
-
-    <div class="contacts">
-      <h2>Contact Me</h2>
-      <ul>
-        <li>Email: <a href="mailto:revxgng@gmail.com">revxgng@gmail.com</a></li>
-        <li>Instagram: <a href="https://instagram.com/_https.revx.ken" target="_blank">@_https.revx.ken</a></li>
-      </ul>
-    </div>
-
-    <!-- Circle Logo clickable to Discord -->
-    <a href="https://discord.com/users/768383488449183745" target="_blank">
-      <div class="circle-logo">
-        <img src="logo-bottom.png" alt="My Custom Logo">
-      </div>
-    </a>
-
-    <!-- Glitch Name -->
-    <div class="glitch">XKXNX</div>
-
-    <!-- Typing Quotes -->
-    <div class="typing">" Do you love xkxnx.... ? "</div>
-  </div>
-
-</body>
-</html>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>XKXNX OFFICIAL WORLD...</title>
-
-  <!-- Favicon -->
-  <link rel="icon" type="image/png" href="favicon.png">
-
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      background: url("mybg.gif") no-repeat center center fixed; /* GIF background */
-      background-size: cover;
-      color: #ffffff;
-      font-family: monospace;
-      overflow-x: hidden;
-      overflow-y: auto;
-      text-align: center;
-    }
-    .content {
-      position: relative;
-      z-index: 2;
-      padding: 50px;
-      background: rgba(0, 0, 0, 0.6);
-      border-radius: 20px;
       display: inline-block;
-      margin-top: 40px;
+      margin-top: 10px;
     }
-    h1.typing-title {
-      font-size: 3.5em;
-      margin-bottom: 20px;
-      text-shadow: 0 0 10px #ffffff;
-      border-right: 2px solid #ffffff;
-      white-space: nowrap;
-      overflow: hidden;
-      width: 32ch;
-      margin-left: auto;
-      margin-right: auto;
-      animation: typingTitle 5s steps(32), blink .75s step-end infinite;
-    }
-    h2 {
-      font-size: 2.5em;
-      margin-bottom: 20px;
-      text-shadow: 0 0 15px #ffffff;
-    }
-    .products {
-      margin: 30px 0;
-      font-size: 1.5em;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 20px;
-    }
-    .product-box {
-      border: 2px solid #ffffff;
-      padding: 20px;
-      width: 300px;
-      border-radius: 10px;
-      box-shadow: 0 0 15px #ffffff;
-      transition: 0.3s;
-    }
-    .product-box:hover {
-      background: rgba(255, 255, 255, 0.1);
-      transform: scale(1.05);
-    }
-    .contacts {
-      margin: 30px 0;
-      font-size: 1.5em;
-    }
-    .contacts ul {
-      list-style: none;
-      padding: 0;
-    }
-    a {
-      color: #ffffff;
-      text-decoration: none;
-    }
-    a:hover {
-      text-decoration: underline;
-    }
-    /* Circle Logo */
-    .circle-logo {
-      margin: 40px auto 10px auto;
-      width: 200px;
-      height: 200px;
-      border-radius: 50%;
-      overflow: hidden;
-      box-shadow: 0 0 20px #ffffff;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    .circle-logo:hover {
-      transform: scale(1.1);
-      box-shadow: 0 0 40px #ffffff;
-    }
-    .circle-logo img {
+    .glitch::before, .glitch::after {
+      content: attr(data-text);
+      position: absolute;
+      left: 0;
       width: 100%;
-      height: 100%;
-      object-fit: cover;
+      overflow: hidden;
+      clip: rect(0, 900px, 0, 0);
     }
-    /* Typing effect */
+    .glitch::before {
+      animation: glitchTop 2s infinite linear alternate-reverse;
+      color: #ff0000;
+    }
+    .glitch::after {
+      animation: glitchBottom 2s infinite linear alternate-reverse;
+      color: #ff3333;
+    }
+    @keyframes glitchTop {
+      0% { clip: rect(0, 9999px, 0, 0); }
+      20% { clip: rect(0, 9999px, 50px, 0); transform: translate(-5px, -5px); }
+      40% { clip: rect(0, 9999px, 0, 0); }
+      60% { clip: rect(0, 9999px, 40px, 0); transform: translate(5px, 5px); }
+      100% { clip: rect(0, 9999px, 0, 0); }
+    }
+    @keyframes glitchBottom {
+      0% { clip: rect(0, 9999px, 0, 0); }
+      20% { clip: rect(50px, 9999px, 100px, 0); transform: translate(5px, 5px); }
+      40% { clip: rect(0, 9999px, 0, 0); }
+      60% { clip: rect(30px, 9999px, 80px, 0); transform: translate(-5px, -5px); }
+      100% { clip: rect(0, 9999px, 0, 0); }
+    }
+    /* Typing effect generic */
     .typing {
       font-size: 1.5em;
       margin-top: 30px;
@@ -315,28 +161,29 @@
     @keyframes blink {
       50% { border-color: transparent }
     }
-    /* Glitch Text Effect */
-    .glitch {
-      font-size: 2em;
-      font-weight: bold;
-      color: red;
-      position: relative;
-      animation: glitch 1s infinite;
+    /* Music Controls */
+    .music-controls {
+      margin-top: 20px;
     }
-    @keyframes glitch {
-      0% { text-shadow: 2px 0 red, -2px 0 #000; }
-      20% { text-shadow: -2px -2px red, 2px 2px #000; }
-      40% { text-shadow: 2px 2px red, -2px -2px #000; }
-      60% { text-shadow: -2px 2px red, 2px -2px #000; }
-      80% { text-shadow: 2px -2px red, -2px 2px #000; }
-      100% { text-shadow: 2px 0 red, -2px 0 #000; }
+    .music-controls button {
+      background: black;
+      color: white;
+      border: 1px solid white;
+      padding: 10px 20px;
+      margin: 5px;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+    .music-controls button:hover {
+      background: white;
+      color: black;
     }
   </style>
 </head>
 <body>
 
-  <!-- Background Music with controls -->
-  <audio id="bg-music" controls autoplay loop>
+  <!-- Background Music with Play/Stop -->
+  <audio id="bg-music" loop>
     <source src="music.mp3" type="audio/mpeg">
     Your browser does not support the audio element.
   </audio>
@@ -353,33 +200,37 @@
 
     <div class="products">
       <h2>Products</h2>
-      <div class="product-box">FILES REV K-SPAMMER</div>
-      <div class="product-box">FILES REV 1.0-NUKER</div>
-      <div class="product-box">FILES REV 2.0</div>
+      <div class="product-box">FILES 1.0</div>
+      <div class="product-box">FILES 2.0</div>
+      <div class="product-box">FILES 3.0</div>
     </div>
 
     <div class="contacts">
       <h2>Contact Me</h2>
       <ul>
-        <li>Email: <a href="mailto:revxgng@gmail.com">revxgng@gmail.com</a></li>
-        <li>Instagram: <a href="https://instagram.com/_https.revx.ken" target="_blank">@_https.revx.ken</a></li>
+        <li>Email: <a href="mailto:xkxnxdex@gmail.com">xkxnxdex@gmail.com</a></li>
+        <li>Instagram: <a href="https://instagram.com/_https.xkxnx" target="_blank">@_https.xkxnx</a></li>
       </ul>
     </div>
 
     <!-- Circle Logo clickable to Discord -->
     <a href="https://discord.com/users/768383488449183745" target="_blank">
       <div class="circle-logo">
-        <img src="logo-bottom.png" alt="My Custom Logo">
+        <img src="mylogo.png" alt="My Custom Logo">
       </div>
     </a>
-
     <!-- Glitch Name -->
-    <div class="glitch">XKXNX</div>
+    <div class="glitch" data-text="XKXNX">XKXNX</div>
 
     <!-- Typing Quotes -->
     <div class="typing">" Do you love xkxnx.... ? "</div>
+
+    <!-- Music Controls -->
+    <div class="music-controls">
+      <button onclick="document.getElementById('bg-music').play()">▶ Play Music</button>
+      <button onclick="document.getElementById('bg-music').pause()">⏸ Stop Music</button>
+    </div>
   </div>
 
 </body>
 </html>
-
