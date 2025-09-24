@@ -141,21 +141,21 @@
     .hall-of-fame {
       display: flex;
       justify-content: center;
-      gap: 60px;
-      margin: 40px auto;
-      flex-wrap: nowrap;
+      gap: 50px;
+      margin-top: 30px;
     }
     .hof-item {
       text-align: center;
     }
     .hof-item img {
-      width: 100px;
-      height: 100px;
+      width: 80px;
+      height: 80px;
       border-radius: 50%;
       box-shadow: 0 0 10px white;
     }
     .hof-item p {
-      margin-top: 10px;
+      margin-top: 8px;
+      font-size: 0.9em;
       color: #fff;
     }
   </style>
@@ -201,26 +201,26 @@
     <!-- Background Music Player -->
     <div style="margin-top:20px;">
       <audio id="bgMusic" loop>
-        <source src="mysound.mp3" type="audio/mpeg">
+        <source src="music.mp3" type="audio/mpeg">
         Your browser does not support the audio tag.
       </audio>
       <button onclick="document.getElementById('bgMusic').play()">▶ Play</button>
       <button onclick="document.getElementById('bgMusic').pause()">⏸ Stop</button>
     </div>
 
-    <!-- Hall of Fame Section (Landscape under your logo) -->
+    <!-- Hall of Fame Section (inside the box, under your logo) -->
     <div class="Anakies Givenchy">
       <div class="hof-item">
-        <img src="cris.png" alt="Cris Givenchy">
-        <p>cris</p>
+        <img src="cris.png" alt="Cris">
+        <p>Cris Givenchy</p>
       </div>
       <div class="hof-item">
-        <img src="pita.jpg" alt="Pita Givenchy">
-        <p>pita</p>
+        <img src="pita.jpg" alt="Pita">
+        <p>Pita Givenchy</p>
       </div>
       <div class="hof-item">
-        <img src="bishop.png" alt="Bishop Quinn Givenchy">
-        <p>bishop</p>
+        <img src="bishop.png" alt="Bishop">
+        <p>Bishop Quinn Givenchy</p>
       </div>
     </div>
 
