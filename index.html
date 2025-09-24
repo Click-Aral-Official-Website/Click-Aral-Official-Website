@@ -9,7 +9,7 @@
       padding: 0;
       background: url("mybg.gif") no-repeat center center fixed; /* GIF background */
       background-size: cover;
-      color: #00ff00;
+      color: white; /* text color white */
       font-family: monospace;
       overflow-x: hidden;
       overflow-y: auto;
@@ -19,7 +19,7 @@
       position: relative;
       z-index: 2;
       padding: 50px;
-      background: rgba(0, 0, 0, 0.6);
+      background: rgba(0, 0, 0, 0.7);
       border-radius: 20px;
       display: inline-block;
       margin-top: 40px;
@@ -27,8 +27,8 @@
     h1.typing-title {
       font-size: 3.5em;
       margin-bottom: 20px;
-      text-shadow: 0 0 10px #00ff00;
-      border-right: 2px solid #00ff00;
+      text-shadow: 0 0 10px white;
+      border-right: 2px solid white;
       white-space: nowrap;
       overflow: hidden;
       width: 32ch;
@@ -39,7 +39,7 @@
     h2 {
       font-size: 2.5em;
       margin-bottom: 20px;
-      text-shadow: 0 0 15px #00ff00;
+      text-shadow: 0 0 15px white;
     }
     .products {
       margin: 30px 0;
@@ -50,15 +50,16 @@
       gap: 20px;
     }
     .product-box {
-      border: 2px solid #00ff00;
+      border: 2px solid white;
       padding: 20px;
       width: 300px;
       border-radius: 10px;
-      box-shadow: 0 0 15px #00ff00;
+      box-shadow: 0 0 15px black;
       transition: 0.3s;
+      color: white;
     }
     .product-box:hover {
-      background: rgba(0, 255, 0, 0.1);
+      background: rgba(255, 255, 255, 0.1);
       transform: scale(1.05);
     }
     .contacts {
@@ -70,7 +71,7 @@
       padding: 0;
     }
     a {
-      color: #00ff00;
+      color: white;
       text-decoration: none;
     }
     a:hover {
@@ -83,12 +84,13 @@
       height: 200px;
       border-radius: 50%;
       overflow: hidden;
-      box-shadow: 0 0 20px #00ff00;
+      box-shadow: 0 0 20px black;
+      border: 3px solid white;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
     .circle-logo:hover {
       transform: scale(1.1);
-      box-shadow: 0 0 40px #00ff00;
+      box-shadow: 0 0 40px white;
     }
     .circle-logo img {
       width: 100%;
@@ -99,8 +101,8 @@
     .typing {
       font-size: 1.5em;
       margin-top: 30px;
-      color: #00ff00;
-      border-right: 2px solid #00ff00;
+      color: white;
+      border-right: 2px solid white;
       white-space: nowrap;
       overflow: hidden;
       width: 30ch;
@@ -119,15 +121,27 @@
     @keyframes blink {
       50% { border-color: transparent }
     }
+    /* Music Buttons */
+    .music-controls {
+      margin-top: 20px;
+    }
+    .music-controls button {
+      background: black;
+      border: 2px solid white;
+      color: white;
+      padding: 10px 20px;
+      margin: 5px;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .music-controls button:hover {
+      background: rgba(255,255,255,0.2);
+      transform: scale(1.05);
+    }
   </style>
 </head>
 <body>
-
-  <!-- Background Music (YouTube autoplay hidden) -->
-  <iframe width="0" height="0" 
-    src="https://youtu.be/muHqXxLo5Lg?si=YpalOf5FfoUuYzfb" 
-    frameborder="0" allow="autoplay">
-  </iframe>
 
   <!-- Main Content -->
   <div class="content">
@@ -157,15 +171,47 @@
 
     <!-- Circle Logo clickable to Discord -->
     <a href="https://discord.com/users/768383488449183745" target="_blank">
-  <div class="circle-logo">
-    <img src="mylogo.png" alt="My Custom Logo">
-  </div>
- </a>
+      <div class="circle-logo">
+        <img src="mylogo.png" alt="My Custom Logo">
+      </div>
+    </a>
 
     <!-- Typing Quotes -->
     <div class="typing">" Do you love xkxnx.... ? "</div>
+
+    <!-- Music Controls -->
+    <div class="music-controls">
+      <button onclick="playAudio()">▶ Play Music</button>
+      <button onclick="stopAudio()">⏹ Stop Music</button>
+    </div>
   </div>
+
+  <!-- YouTube Hidden Player -->
+  <div style="display:none;">
+    <iframe id="ytplayer" width="0" height="0"
+      src="https://www.youtube.com/embed/iKfMspsKmY8?enablejsapi=1"
+      frameborder="0"></iframe>
+  </div>
+
+  <script>
+    // YouTube API
+    let player;
+    function onYouTubeIframeAPIReady() {
+      player = new YT.Player('ytplayer');
+    }
+    function playAudio() {
+      if (player) player.playVideo();
+    }
+    function stopAudio() {
+      if (player) player.stopVideo();
+    }
+
+    // Load YouTube API script
+    let tag = document.createElement('script');
+    tag.src = "https://www.youtube.com/iframe_api";
+    let firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+  </script>
 
 </body>
 </html>
-
