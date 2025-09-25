@@ -1,263 +1,563 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>XKXNX OFFICIAL WEBSITE</title>
-  <link rel="icon" type="image/png" href="favic.png"> <!-- Favicon -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>CLICK ARAL — Official Website</title>
+  <link rel="icon" href="favic.png" type="image/png" />
   <style>
-    body {
-      margin: 0;
-      padding: 0;
-      background: url("mygif.jpg") no-repeat center center fixed;
+    :root{
+      --accent:#3b82f6; --glass: rgba(0,0,0,0.5);
+      --card:#ffffff;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: Inter, Arial, sans-serif;
+      background: #333;
+      color:#fff;
+      -webkit-font-smoothing:antialiased;
+      text-rendering:optimizeLegibility;
+      text-align:center;
+      min-height:100%;
+      display:flex;
+      align-items:flex-start;
+      justify-content:center;
+      padding:24px;
+      background-image: url("mybg.jpg"); /* REPLACE: your background image filename */
       background-size: cover;
-      color: #fff;
-      font-family: monospace;
-      text-align: center;
+      background-position:center;
+      background-attachment: fixed;
     }
-    .content {
-      position: relative;
-      z-index: 2;
-      padding: 30px;
-      background: rgba(0, 0, 0, 0.6);
-      border-radius: 20px;
-      display: inline-block;
-      margin-top: 40px;
+
+    /* glass panel center */
+    .wrap{
+      width:100%;
+      max-width:1100px;
+      margin:18px auto;
+      background: linear-gradient(180deg, rgba(0,0,0,0.56), rgba(0,0,0,0.54));
+      border-radius:16px;
+      padding:22px;
+      box-shadow:0 12px 36px rgba(0,0,0,0.6);
     }
-    h1.typing-title {
-      font-size: 3em;
-      margin-bottom: 20px;
-      text-shadow: 0 0 10px red;
-      border-right: 2px solid red;
-      white-space: nowrap;
-      overflow: hidden;
-      width: 32ch;
-      margin-left: auto;
-      margin-right: auto;
-      animation: typingTitle 5s steps(32), blink .75s step-end infinite;
+
+    header{
+      display:flex;
+      align-items:center;
+      gap:18px;
+      justify-content:center;
+      margin-bottom:6px;
+      flex-wrap:wrap;
     }
-    h2 {
-      font-size: 2em;
-      margin-bottom: 20px;
-      text-shadow: 0 0 15px white;
+    .logo{
+      width:96px; height:96px; border-radius:50%; overflow:hidden; box-shadow:0 8px 18px rgba(0,0,0,0.6);
+      background:linear-gradient(45deg,#111,#333); display:flex; align-items:center; justify-content:center;
     }
-    .products, .contacts {
-      margin: 20px 0;
-      font-size: 1.2em;
+    .logo img{ width:100%; height:100%; object-fit:cover; display:block }
+
+    h1{
+      font-size:48px; margin:6px 0 6px; letter-spacing:1px; color:#fff;
+      text-shadow: 0 4px 18px rgba(0,0,0,0.7);
     }
-    .product-box {
-      border: 2px solid white;
-      padding: 15px;
-      width: 200px;
-      border-radius: 10px;
-      box-shadow: 0 0 10px white;
-      transition: 0.3s;
-      margin: 10px auto;
+    .subtitle{ color:#e6eef8; opacity:0.9; margin-bottom:18px }
+
+    .grid{
+      display:flex; gap:18px; justify-content:center; flex-wrap:wrap; margin-top:10px;
     }
-    .product-box:hover {
-      background: rgba(255,255,255,0.1);
-      transform: scale(1.05);
+    .card{
+      width:240px; min-height:120px; padding:16px; border-radius:12px; background:rgba(255,255,255,0.06);
+      box-shadow: 0 6px 18px rgba(2,6,23,0.5); cursor:pointer; transition: transform .18s, box-shadow .18s;
+      color:#fff; text-align:center;
     }
-    a {
-      color: #fff;
-      text-decoration: none;
+    .card:hover{ transform:translateY(-6px); box-shadow:0 18px 36px rgba(0,0,0,0.6) }
+    .card h3{ margin:6px 0; font-size:18px }
+    .card p{ margin:6px 0; color:#e6eef8; opacity:0.95; font-size:14px }
+
+    /* modals */
+    .modal{
+      display:none; position:fixed; inset:0; align-items:center; justify-content:center;
+      background: rgba(0,0,0,0.6); z-index:80; padding:16px;
     }
-    a:hover {
-      text-decoration: underline;
+    .modal.open{ display:flex; }
+    .modal .panel{
+      width:100%; max-width:900px; background:#fff; color:#111; border-radius:10px; padding:18px;
+      box-shadow:0 10px 30px rgba(0,0,0,0.3); text-align:left;
+      max-height:88vh; overflow:auto;
     }
-    /* Circle Logo */
-    .circle-logo {
-      margin: 20px auto;
-      width: 120px;
-      height: 120px;
-      border-radius: 50%;
-      overflow: hidden;
-      box-shadow: 0 0 15px red;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    .close-btn{ float:right; cursor:pointer; font-size:20px; padding:4px 8px; background:#eee; border-radius:6px }
+
+    /* canvas game */
+    canvas{ display:block; margin:12px auto; background:#70c5ce; border-radius:8px; }
+
+    /* quiz */
+    .question { font-weight:700; margin-bottom:8px; }
+    .options { display:flex; flex-direction:column; gap:8px; margin-bottom:12px; }
+    .options button{ padding:10px; border-radius:8px; border:1px solid #ddd; cursor:pointer; background:#f7f7f7; text-align:left; }
+    .options button.correct{ background:#d1fae5; border-color:#10b981; }
+    .options button.wrong{ background:#fee2e2; border-color:#ef4444; }
+
+    /* small screens */
+    @media(max-width:640px){
+      h1{ font-size:30px }
+      .card{ width:92% }
+      .logo{ width:76px; height:76px }
     }
-    .circle-logo:hover {
-      transform: scale(1.1);
-      box-shadow: 0 0 30px red;
-    }
-    .circle-logo img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-    /* Glitch Effect for Name */
-    .glitch {
-      font-size: 1.5em;
-      color: red;
-      position: relative;
-      animation: glitch 1s infinite;
-      margin-top: 10px;
-      margin-bottom: 20px;
-    }
-    @keyframes glitch {
-      0% { text-shadow: 2px 2px red; }
-      20% { text-shadow: -2px -2px #ff0000; }
-      40% { text-shadow: 2px -2px #ff4444; }
-      60% { text-shadow: -2px 2px #ff0000; }
-      80% { text-shadow: 2px 2px #ff2222; }
-      100% { text-shadow: none; }
-    }
-    /* Typing effect */
-    .typing {
-      font-size: 1.2em;
-      margin-top: 20px;
-      color: #fff;
-      border-right: 2px solid #fff;
-      white-space: nowrap;
-      overflow: hidden;
-      width: 25ch;
-      margin-left: auto;
-      margin-right: auto;
-      animation: typing 5s steps(25), blink .75s step-end infinite;
-    }
-    @keyframes typing {
-      from { width: 0 }
-      to { width: 25ch }
-    }
-    @keyframes typingTitle {
-      from { width: 0 }
-      to { width: 32ch }
-    }
-    @keyframes blink {
-      50% { border-color: transparent }
-    }
-    /* Heart Button */
-    .heart {
-      font-size: 2em;
-      cursor: pointer;
-      color: #aaa;
-      transition: color 0.3s;
-    }
-    .heart.liked {
-      color: red;
-    }
-    .stats {
-      margin-top: 20px;
-      font-size: 1em;
-    }
-    /* Hall of Fame */
-    .hall-of-fame {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 60px;
-      margin-top: 30px;
-    }
-    .hof-item {
-      text-align: center;
-    }
-    .hof-item img {
-      width: 90px;
-      height: 90px;
-      border-radius: 50%;
-      box-shadow: 0 0 15px white;
-    }
-    .hof-item p {
-      margin-top: 10px;
-      font-size: 1em;
-      color: #fff;
-    }
+
+    footer{ margin-top:12px; color:#cbd5e1; font-size:14px; text-align:center }
+    .row{ display:flex; gap:12px; flex-wrap:wrap }
+    .btn{ background:var(--accent); color:#fff; border:none; padding:8px 12px; border-radius:8px; cursor:pointer }
+    .muted{ color:#6b7280 }
   </style>
 </head>
 <body>
-
-  <div class="content">
-    <h1 class="typing-title">XKXNX OFFICIAL WEBSITE </h1>
-
-    <div class="products">
-      <h2>Products</h2>
-      <div class="product-box">CSS MODULE 1</div>
-      <div class="product-box">CSS MODULE 2</div>
-      <div class="product-box">CSS MODULE 3</div>
-    </div>
-
-    <div class="contacts">
-      <h2>Contact Me</h2>
-      <ul>
-        <li>Email: <a href="mailto: XKXNX@gmail.com">XKXNX@gmail.com</a></li>
-        <li>Instagram: <a href="https://instagram.com/_XKXNX" target="_blank">@_XKXNX</a></li>
-      </ul>
-    </div>
-
-    <!-- Circle Logo clickable to Discord -->
-    <a href="https://discord.com/users/768383488449183745" target="_blank">
-      <div class="circle-logo">
-        <img src="mylogo.png" alt="My Custom Logo">
+  <div class="wrap" role="main">
+    <header>
+      <div class="logo"><img src="mylogo.png" alt="Logo (replace mylogo.png)"></div>
+      <div>
+        <h1>CLICK ARAL OFFICIAL WEBSITE</h1>
+        <div class="subtitle">Learn • Practice • Play — click any box to start</div>
       </div>
-    </a>
-    <div class="glitch">XKXNX-FATHER</div>
+    </header>
 
-    <!-- Typing Quotes -->
-    <div class="typing">" Do you love xkxnx.... ? "</div>
-
-    <!-- Heart + View Counter -->
-    <div class="stats">
-      <span id="heartBtn" class="heart">&#10084;</span>
-      <span id="heartCount">0</span> Hearts <br>
-      👁 <span id="viewCount">0</span> Views
-    </div>
-
-    <!-- Background Music Player -->
-    <div style="margin-top:20px;">
-      <audio id="bgMusic" loop>
-        <source src="music.mp3" type="audio/mpeg">
-        Your browser does not support the audio tag.
-      </audio>
-      <button onclick="document.getElementById('bgMusic').play()">▶ Play</button>
-      <button onclick="document.getElementById('bgMusic').pause()">⏸ Stop</button>
-    </div>
-
-    <!-- Hall of Fame Section -->
-    <div class="hall-of-fame">
-      <div class="hof-item">
-        <img src="cris.png" alt="Cris">
-        <p>Cris Givenchy</p>
+    <!-- MAIN GRID -->
+    <section class="grid" aria-label="Main Products">
+      <div class="card" onclick="openModal('quizModal')">
+        <h3>ICT QUIZ GAME</h3>
+        <p>Interactive multiple-choice quiz with timer and leaderboard (local).</p>
       </div>
-      <div class="hof-item">
-        <img src="bishop.png" alt="Bishop">
-        <p>Bishop Quinn Givenchy</p>
-      </div>
-      <div class="hof-item">
-        <img src="pita.jpg" alt="Pita">
-        <p>Pita Givenchy</p>
-      </div>
-    </div>
 
+      <div class="card" onclick="openModal('flappyModal')">
+        <h3>FLOPPY BIRD GAME</h3>
+        <p>Play the Flappy-style game. Replace bird image anytime.</p>
+      </div>
+
+      <div class="card" onclick="openModal('modulesModal')">
+        <h3>MODULES (CSS / ICT ...)</h3>
+        <p>Modular lessons separated into Parts; with assessments.</p>
+      </div>
+
+      <div class="card" onclick="openModal('pagsulatModal')">
+        <h3>PAGSULAT MODULE</h3>
+        <p>Writing lessons and short activities — click to open.</p>
+      </div>
+    </section>
+
+    <footer>
+      <div class="row" style="justify-content:center;align-items:center">
+        <div class="muted">Background image: <strong>mybg.jpg</strong> • Logo: <strong>mylogo.png</strong></div>
+        <div style="margin-left:8px">
+          <button class="btn" onclick="toggleMusic()">Play / Pause Music</button>
+        </div>
+      </div>
+    </footer>
+
+    <!-- ABOUT / CONTACT -->
+    <section style="margin-top:18px; text-align:left; color:#e6eef8">
+      <h2 style="color:#fff">About / Contact</h2>
+      <p class="muted">Click Aral — learning site demo. Contact: <a href="mailto:XKXNX@gmail.com">XKXNX@gmail.com</a></p>
+    </section>
   </div>
 
-  <script>
-    // CountAPI namespace para stable data
-    const NAMESPACE = "xkxnx-official-world";
+  <!-- MUSIC (user must trigger play; file name music.mp3) -->
+  <audio id="bgMusic" loop preload="none">
+    <source src="music.mp3" type="audio/mpeg">
+    Your browser doesn't support audio.
+  </audio>
 
-    // Viewer Counter (CountAPI)
-    fetch(`https://api.countapi.xyz/hit/${NAMESPACE}/visits`)
-      .then(res => res.json())
-      .then(data => {
-        document.getElementById("viewCount").innerText = data.value;
-      });
+  <!-- ===================== MODALS ===================== -->
 
-    // Heart Counter
-    const heartBtn = document.getElementById("heartBtn");
-    const heartCount = document.getElementById("heartCount");
+  <!-- ICT QUIZ MODAL -->
+  <div id="quizModal" class="modal" aria-hidden="true">
+    <div class="panel" role="dialog" aria-modal="true">
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <h3>ICT Quiz Game</h3>
+        <div class="close-btn" onclick="closeModal('quizModal')">&times;</div>
+      </div>
+      <p class="muted">Answer questions before timer runs out. Your score saved locally as leaderboard.</p>
 
-    fetch(`https://api.countapi.xyz/get/${NAMESPACE}/hearts`)
-      .then(res => res.json())
-      .then(data => {
-        heartCount.innerText = data.value || 0;
-      });
+      <div id="quizArea">
+        <div style="display:flex;gap:10px;align-items:center">
+          <div><strong>Time:</strong> <span id="quizTimer">--</span>s</div>
+          <div style="margin-left:12px"><strong>Score:</strong> <span id="quizScore">0</span></div>
+          <div style="margin-left:auto">
+            <button class="btn" onclick="startQuiz()">Start Quiz</button>
+          </div>
+        </div>
 
-    heartBtn.addEventListener("click", () => {
-      heartBtn.classList.add("liked");
-      fetch(`https://api.countapi.xyz/hit/${NAMESPACE}/hearts`)
-        .then(res => res.json())
-        .then(data => {
-          heartCount.innerText = data.value;
-        });
+        <hr>
+        <div id="questionBox" style="margin-top:12px; display:none">
+          <div class="question" id="qText">Question text</div>
+          <div class="options" id="qOptions"></div>
+        </div>
+
+        <div id="quizResult" style="margin-top:12px"></div>
+
+        <hr>
+        <div>
+          <h4>Leaderboard (local)</h4>
+          <ol id="leaderboard"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FLAPPY GAME MODAL -->
+  <div id="flappyModal" class="modal" aria-hidden="true">
+    <div class="panel">
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <h3>Floppy Bird — Mini Game</h3>
+        <div class="close-btn" onclick="closeModal('flappyModal')">&times;</div>
+      </div>
+      <p class="muted">Press Space or Tap the canvas to flap.</p>
+      <div style="text-align:center; margin-top:10px">
+        <button class="btn" onclick="startFlappy()">Start Game</button>
+        <button class="btn" onclick="resetFlappy()">Reset</button>
+      </div>
+      <canvas id="flappyCanvas" width="360" height="520" style="margin-top:12px"></canvas>
+      <div style="margin-top:8px">
+        <strong>Score:</strong> <span id="flapScore">0</span>
+      </div>
+      <p class="muted" style="margin-top:8px">To use your own bird image: upload <code>bird.png</code> to the repo and edit script (see comment).</p>
+    </div>
+  </div>
+
+  <!-- MODULES MODAL -->
+  <div id="modulesModal" class="modal" aria-hidden="true">
+    <div class="panel">
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <h3>Modules — Computer Hardware (Example)</h3>
+        <div class="close-btn" onclick="closeModal('modulesModal')">&times;</div>
+      </div>
+
+      <p><strong>Module: Computer Hardware</strong></p>
+
+      <div style="margin-top:10px">
+        <h4>Part 1: Introduction</h4>
+        <p>Ano ang hardware? Bakit mahalaga?</p>
+
+        <h4>Part 2: Major Components</h4>
+        <ul>
+          <li>Input devices: keyboard, mouse, scanner</li>
+          <li>Output devices: monitor, printer</li>
+          <li>Storage: HDD, SSD, USB</li>
+        </ul>
+
+        <h4>Part 3: Inside the System Unit</h4>
+        <ul>
+          <li>Motherboard</li>
+          <li>CPU</li>
+          <li>RAM</li>
+          <li>Power Supply</li>
+        </ul>
+
+        <h4>Part 4: Practical</h4>
+        <p>Step-by-step assembling + safety tips.</p>
+
+        <h4>Part 5: Assessment</h4>
+        <p>Short quiz below (example):</p>
+        <div class="question">Ano ang utak ng computer?</div>
+        <div class="options" style="max-width:360px">
+          <button onclick="alert('Tama! CPU ang sagot')">CPU</button>
+          <button onclick="alert('Mali. Try again')">Monitor</button>
+          <button onclick="alert('Mali. Try again')">Mouse</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PAGSULAT MODULE -->
+  <div id="pagsulatModal" class="modal" aria-hidden="true">
+    <div class="panel">
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <h3>Pagsulat Module</h3>
+        <div class="close-btn" onclick="closeModal('pagsulatModal')">&times;</div>
+      </div>
+
+      <p><strong>Activity:</strong> Sumulat ng maikling talata (3-5 pangungusap) tungkol sa kahalagahan ng pagsulat.</p>
+      <textarea id="essay" rows="6" style="width:100%;padding:10px;border-radius:8px;border:1px solid #ddd"></textarea>
+      <div style="margin-top:8px">
+        <button class="btn" onclick="submitEssay()">Submit</button>
+        <button class="btn" onclick="document.getElementById('essay').value = ''">Clear</button>
+      </div>
+      <div id="essayResult" style="margin-top:10px"></div>
+    </div>
+  </div>
+
+  <!-- Overlay for small messages -->
+  <div id="msgModal" class="modal" aria-hidden="true">
+    <div class="panel">
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <h3 id="msgTitle">Message</h3>
+        <div class="close-btn" onclick="closeModal('msgModal')">&times;</div>
+      </div>
+      <div id="msgBody"></div>
+    </div>
+  </div>
+
+<script>
+/* ========================
+   Modal helpers
+   ======================== */
+function openModal(id){
+  document.getElementById(id).classList.add('open');
+  document.getElementById(id).setAttribute('aria-hidden','false');
+}
+function closeModal(id){
+  document.getElementById(id).classList.remove('open');
+  document.getElementById(id).setAttribute('aria-hidden','true');
+}
+
+/* ========================
+   Background music control
+   ======================== */
+const bgMusic = document.getElementById('bgMusic');
+function toggleMusic(){
+  if(bgMusic.paused) {
+    bgMusic.play().catch(()=> {
+      // browser may block autoplay; require user gesture (we already do via button)
+      showMessage('Playback blocked', 'Please tap Play on your device if it did not start.');
     });
-  </script>
+  } else {
+    bgMusic.pause();
+  }
+}
+
+/* ========================
+   SIMPLE ICT QUIZ (client-side)
+   - sample questions
+   - timer per question
+   - leaderboard saved in localStorage
+   ======================== */
+const quizQuestions = [
+  {q:"Ano ang ginagawa ng CPU?", options:["Nag-iimbak ng files","Nagpo-proseso ng instructions","Nagpi-print ng dokumento"], a:1},
+  {q:"Alin sa mga ito ay storage device?", options:["RAM","Hard Drive","Monitor"], a:1},
+  {q:"Ano ang ginagamit para i-input ang text?", options:["Keyboard","Speaker","Power Supply"], a:0}
+];
+
+let quizState = { idx:0, score:0, timeLeft:15, timerId:null };
+
+function startQuiz(){
+  quizState.idx = 0; quizState.score = 0; document.getElementById('quizScore').innerText = 0;
+  openModal('quizModal'); // ensure modal open
+  showQuestion();
+}
+
+function showQuestion(){
+  const qBox = document.getElementById('questionBox');
+  const qText = document.getElementById('qText');
+  const qOptions = document.getElementById('qOptions');
+  const qTimer = document.getElementById('quizTimer');
+
+  if(quizState.idx >= quizQuestions.length){
+    // end quiz
+    endQuiz();
+    return;
+  }
+
+  qBox.style.display = 'block';
+  const item = quizQuestions[quizState.idx];
+  qText.innerText = item.q;
+  qOptions.innerHTML = '';
+  item.options.forEach((opt,i) => {
+    const btn = document.createElement('button');
+    btn.innerText = opt;
+    btn.onclick = ()=> {
+      clearInterval(quizState.timerId);
+      if(i === item.a){
+        quizState.score += 10;
+        btn.classList.add('correct');
+      } else {
+        btn.classList.add('wrong');
+      }
+      document.getElementById('quizScore').innerText = quizState.score;
+      setTimeout(()=> { quizState.idx++; showQuestion(); }, 800);
+    };
+    qOptions.appendChild(btn);
+  });
+
+  // timer
+  quizState.timeLeft = 15;
+  qTimer.innerText = quizState.timeLeft;
+  clearInterval(quizState.timerId);
+  quizState.timerId = setInterval(() => {
+    quizState.timeLeft--;
+    qTimer.innerText = quizState.timeLeft;
+    if(quizState.timeLeft <= 0){
+      clearInterval(quizState.timerId);
+      quizState.idx++;
+      showQuestion();
+    }
+  },1000);
+}
+
+function endQuiz(){
+  document.getElementById('questionBox').style.display = 'none';
+  document.getElementById('quizResult').innerText = 'Quiz natapos! Score: ' + quizState.score;
+  saveLeaderboard(quizState.score);
+  renderLeaderboard();
+}
+
+/* leaderboard using localStorage */
+function saveLeaderboard(score){
+  let board = JSON.parse(localStorage.getItem('clickaral_leader')) || [];
+  const name = prompt('Ilagay ang iyong pangalan para sa leaderboard (o i-skip)') || 'Guest';
+  board.push({name:name, score:score, date: new Date().toISOString()});
+  board = board.sort((a,b)=> b.score - a.score).slice(0,10);
+  localStorage.setItem('clickaral_leader', JSON.stringify(board));
+}
+function renderLeaderboard(){
+  const ol = document.getElementById('leaderboard');
+  ol.innerHTML = '';
+  let board = JSON.parse(localStorage.getItem('clickaral_leader')) || [];
+  if(board.length === 0){
+    ol.innerHTML = '<li class="muted">Walang scores pa — maglaro muna!</li>'; return;
+  }
+  board.forEach(item=>{
+    const li = document.createElement('li');
+    li.innerText = `${item.name} — ${item.score}`;
+    ol.appendChild(li);
+  });
+}
+renderLeaderboard();
+
+/* ========================
+   PAGSULAT submission
+   ======================== */
+function submitEssay(){
+  const text = document.getElementById('essay').value.trim();
+  const out = document.getElementById('essayResult');
+  if(text.length < 20){
+    out.innerHTML = '<span style="color:#ef4444">Masyadong maikli. Sulatin nang mas mahaba (3-5 pangungusap).</span>';
+    return;
+  }
+  out.innerHTML = '<span style="color:#10b981">Salamat! Na-save ang iyong gawa (lokal lang).</span>';
+  // save locally
+  const essays = JSON.parse(localStorage.getItem('clickaral_essays') || '[]');
+  essays.push({text:text, date:new Date().toISOString()});
+  localStorage.setItem('clickaral_essays', JSON.stringify(essays));
+  document.getElementById('essay').value = '';
+}
+
+/* ========================
+   FLAPPY (simplified)
+   ======================== */
+const fCanvas = document.getElementById('flappyCanvas');
+const fCtx = fCanvas.getContext('2d');
+let fW = fCanvas.width, fH = fCanvas.height;
+let fBird = { x: 60, y: fH/2 - 20, w: 40, h: 30, vel:0, gravity:0.45, lift:-8 };
+let fPipes = [], fScore = 0, fRunning = false, fAnim = null, fSpawn = 0;
+
+// bird image: embedded svg used by default
+const birdSVG = `<svg xmlns='http://www.w3.org/2000/svg' width='80' height='60' viewBox='0 0 80 60'>
+  <rect rx='12' width='80' height='60' fill='#ffcc00'/>
+  <circle cx='48' cy='20' r='6' fill='#222'/>
+  <path d='M18 36 q10 -12 26 -6' stroke='#d17b00' stroke-width='4' fill='none' stroke-linecap='round'/>
+</svg>`;
+const birdData = 'data:image/svg+xml;utf8,' + encodeURIComponent(birdSVG);
+const birdImg = new Image();
+birdImg.src = birdData;
+
+// If you want to use external bird image instead:
+// birdImg.src = 'bird.png'; // make sure you uploaded bird.png to repo
+
+function startFlappy(){
+  resetFlappy();
+  openModal('flappyModal');
+  fRunning = true;
+  fAnim = requestAnimationFrame(fLoop);
+  window.addEventListener('keydown', fKey);
+  fCanvas.addEventListener('pointerdown', fTap);
+}
+function resetFlappy(){
+  cancelAnimationFrame(fAnim);
+  fBird.y = fH/2 - 20; fBird.vel = 0;
+  fPipes = []; fScore = 0; document.getElementById('flapScore').innerText = 0;
+  fRunning = false;
+  window.removeEventListener('keydown', fKey);
+  fCanvas.removeEventListener('pointerdown', fTap);
+}
+function fKey(e){ if(e.code==='Space'){ fBird.vel = fBird.lift; e.preventDefault(); } }
+function fTap(){ fBird.vel = fBird.lift; }
+
+function fLoop(ts){
+  // physics
+  fBird.vel += fBird.gravity;
+  fBird.y += fBird.vel;
+
+  // spawn pipes
+  fSpawn++;
+  if(fSpawn > 90){ addFPipe(); fSpawn = 0; }
+  for(let i=fPipes.length-1;i>=0;i--){
+    const p = fPipes[i];
+    p.x -= 2.6;
+    if(!p.passed && p.x + p.w < fBird.x){ p.passed = true; fScore++; document.getElementById('flapScore').innerText = fScore; }
+    // collision
+    if(fBird.x < p.x + p.w && fBird.x + fBird.w > p.x){
+      if(fBird.y < p.top || fBird.y + fBird.h > fH - p.bottom){
+        // game over
+        fGameOver();
+        return;
+      }
+    }
+    if(p.x + p.w < -20) fPipes.splice(i,1);
+  }
+
+  // floor/ceiling
+  if(fBird.y + fBird.h > fH){ fBird.y = fH - fBird.h; fGameOver(); return; }
+  if(fBird.y < 0){ fBird.y = 0; fBird.vel = 0; }
+
+  // draw
+  fCtx.clearRect(0,0,fW,fH);
+  // ground
+  fCtx.fillStyle = '#7dd3fc'; fCtx.fillRect(0,fH-18,fW,18);
+  // pipes
+  fCtx.fillStyle = '#16a34a';
+  for(const p of fPipes){ fCtx.fillRect(p.x,0,p.w,p.top); fCtx.fillRect(p.x,fH-p.bottom,p.w,p.bottom); }
+  // bird
+  if(birdImg.complete) fCtx.drawImage(birdImg,fBird.x,fBird.y,fBird.w,fBird.h);
+  else { fCtx.fillStyle='#ffcc00'; fCtx.fillRect(fBird.x,fBird.y,fBird.w,fBird.h); }
+
+  fAnim = requestAnimationFrame(fLoop);
+}
+function addFPipe(){
+  const gap = 120;
+  const minTop = 36;
+  const maxTop = fH - gap - 80;
+  const top = minTop + Math.random()*(Math.max(0, maxTop - minTop));
+  fPipes.push({ x: fW + 20, w: 52, top: top, bottom: fH - top - gap, passed:false });
+}
+function fGameOver(){
+  fRunning = false;
+  cancelAnimationFrame(fAnim);
+  window.removeEventListener('keydown', fKey);
+  fCanvas.removeEventListener('pointerdown', fTap);
+  // show message
+  showMessage('Game Over', 'Score: ' + fScore);
+}
+
+/* ========================
+   small UI message modal
+   ======================== */
+function showMessage(title, body){
+  document.getElementById('msgTitle').innerText = title;
+  document.getElementById('msgBody').innerText = body;
+  openModal('msgModal');
+}
+
+/* close all modals on ESC */
+window.addEventListener('keydown', e=>{
+  if(e.key === 'Escape'){
+    document.querySelectorAll('.modal.open').forEach(m=> m.classList.remove('open'));
+  }
+});
+
+/* on load, if bgMusic exists, do not autoplay (browsers block). We'll require user click the toggleMusic button */
+document.addEventListener('DOMContentLoaded', ()=> {
+  // placeholder: ensure canvas sized correctly
+  fW = fCanvas.width; fH = fCanvas.height;
+});
+</script>
 
 </body>
-</html>
+  </html>
