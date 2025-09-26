@@ -3,31 +3,54 @@
 <head>
   <meta charset="UTF-8">
   <title>CLICK ARAL OFFICIAL WEBSITE</title>
+  <link rel="icon" type="image/png" href="favicon.png">
   <style>
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background: linear-gradient(to bottom, #87CEEB 50%, #fff 50%);
+      background: #f0f2f5;
     }
-    header {
+
+    /* Hero Section */
+    .hero {
+      background: url('mybg.jpg') no-repeat center center/cover;
+      height: 300px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       text-align: center;
-      padding: 20px;
+      color: white;
     }
-    header img {
+    .hero::after {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.4);
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+    }
+    .hero-content img {
       width: 80px;
       height: 80px;
+      border-radius: 50%;
+      margin-bottom: 10px;
     }
-    header h1 {
-      color: blue;
-      font-size: 40px;
+    .hero-content h1 {
+      font-size: 32px;
+      margin: 10px 0 5px;
     }
-    header p {
+    .hero-content p {
       font-size: 18px;
-      font-weight: bold;
     }
+
+    /* Nav */
     nav {
       text-align: center;
-      margin-bottom: 20px;
+      margin: 15px 0;
     }
     nav button {
       margin: 5px;
@@ -37,16 +60,20 @@
       color: white;
       border-radius: 10px;
       cursor: pointer;
+      font-size: 16px;
     }
     nav button:hover {
       background: #45a049;
     }
+
+    /* Progress Bar */
     .progress-container {
       width: 80%;
-      margin: 0 auto 20px;
+      margin: 20px auto;
       background: #ddd;
       border-radius: 10px;
       overflow: hidden;
+      display: none; /* hidden until click */
     }
     .progress-bar {
       width: 0%;
@@ -56,29 +83,36 @@
       color: white;
       font-size: 12px;
     }
+
+    /* Modules */
     .modules {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
       gap: 20px;
       padding: 20px;
+      max-width: 900px;
+      margin: 0 auto;
     }
     .module {
-      padding: 20px;
+      padding: 25px;
       border-radius: 15px;
       color: white;
       cursor: pointer;
       text-align: center;
       font-size: 18px;
-      transition: transform 0.2s;
+      font-weight: bold;
+      transition: transform 0.2s, box-shadow 0.2s;
     }
     .module:hover {
-      transform: scale(1.05);
+      transform: translateY(-5px);
+      box-shadow: 0 6px 15px rgba(0,0,0,0.2);
     }
     .blue { background: #2196F3; }
     .green { background: #4CAF50; }
     .orange { background: #FF9800; }
     .purple { background: #9C27B0; }
 
+    /* Sections (Quiz, Lessons, Game) */
     .quiz, .game, .lesson {
       display: none;
       padding: 20px;
@@ -110,43 +144,68 @@
       border: 2px solid #333;
     }
 
+    /* Footer */
     footer {
       text-align: center;
       padding: 20px;
-      background: #f9f9f9;
+      background: #fafafa;
+      margin-top: 30px;
+      font-size: 14px;
     }
     footer img {
-      width: 60px;
-      height: 60px;
+      width: 50px;
+      height: 50px;
+      display: block;
+      margin: 0 auto 10px;
+    }
+    footer a {
+      color: #2196F3;
+      text-decoration: none;
     }
   </style>
 </head>
 <body>
 
-<header>
-  <img src="logo.png" alt="Logo">
-  <h1>CLICK ARAL OFFICIAL WEBSITE</h1>
-  <p>MODULE EXAMPLE SOFTWARE BASIC</p>
-</header>
+<!-- Hero -->
+<div class="hero">
+  <div class="hero-content">
+    <img src="mylogo.png" alt="Logo">
+    <h1>CLICK ARAL OFFICIAL WEBSITE</h1>
+    <p>MODULE EXAMPLE SOFTWARE BASIC</p>
+    <button onclick="toggleMusic()" 
+      style="margin-top:10px; padding:8px 15px; border:none; background:#FF5722; color:white; border-radius:8px; cursor:pointer;">
+      Play / Pause Music
+    </button>
+  </div>
+</div>
 
+<!-- Background Music -->
+<audio id="bgMusic" loop>
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<!-- Navigation -->
 <nav>
   <button onclick="showSection('home')">Home</button>
   <button onclick="showSection('dashboard')">Dashboard</button>
 </nav>
 
-<div class="progress-container">
+<!-- Progress Bar -->
+<div class="progress-container" id="progressContainer">
   <div class="progress-bar" id="progressBar">0%</div>
 </div>
 
+<!-- Home -->
 <section id="home">
   <div class="modules">
-    <div class="module blue" onclick="openSection('pagsulatQuiz')">PAGSULAT MODULE</div>
-    <div class="module green" onclick="openSection('cssQuiz')">CSS NC 2 MODULE</div>
-    <div class="module orange" onclick="openSection('flappyGame')">MINI GAME MODULE</div>
-    <div class="module purple" onclick="openSection('lessonModule')">MODULE EXAMPLE SOFTWARE BASIC</div>
+    <div class="module blue" onclick="openSection('pagsulatQuiz',10)">PAGSULAT MODULE</div>
+    <div class="module orange" onclick="openSection('cssQuiz',10)">CSS NC 2 MODULE</div>
+    <div class="module green" onclick="openSection('flappyGame',5)">MINI GAME MODULE</div>
+    <div class="module purple" onclick="openSection('lessonModule',20)">MODULE EXAMPLE SOFTWARE BASIC</div>
   </div>
 </section>
 
+<!-- Dashboard -->
 <section id="dashboard" style="display:none;">
   <h2 style="text-align:center;">Dashboard</h2>
   <p style="text-align:center;">Progress and Points will show here.</p>
@@ -166,6 +225,7 @@
 <div class="quiz" id="cssQuiz">
   <h2>CSS NC2 Module - Identify Motherboards</h2>
   <form id="cssForm">
+    <!-- same quiz items -->
     <p>1. Ano ang pangunahing circuit board ng computer?</p>
     <label><input type="radio" name="q1" value="correct"> Motherboard</label><br>
     <label><input type="radio" name="q1" value="wrong"> RAM</label><br>
@@ -221,15 +281,17 @@
   <p id="lessonResult"></p>
 </div>
 
+<!-- Footer -->
 <footer>
-  <img src="logo.png" alt="Logo">
-  <p>&copy; 2025 CLICK ARAL</p>
+  <img src="mylogo.png" alt="Logo">
+  <p>© 2025 CLICK ARAL — Learning site demo. Contact: <a href="mailto:xxxnx@gmail.com">xxxnx@gmail.com</a></p>
 </footer>
 
 <script>
   let points = 0;
 
   function updateProgress(addPoints) {
+    document.getElementById("progressContainer").style.display = "block";
     points += addPoints;
     if (points > 100) points = 100;
     document.getElementById("scoreBoard").innerText = "Total Points: " + points;
@@ -243,9 +305,10 @@
     document.getElementById(section).style.display = "block";
   }
 
-  function openSection(id) {
+  function openSection(id, addPoints) {
     document.querySelectorAll(".quiz, .game, .lesson").forEach(sec => sec.style.display = "none");
     document.getElementById(id).style.display = "block";
+    updateProgress(addPoints);
   }
 
   function submitPagsulat() {
@@ -274,65 +337,77 @@
     updateProgress(20);
   }
 
-  // Flappy Bird Game
+  // Background Music
+  function toggleMusic() {
+    const music = document.getElementById("bgMusic");
+    if (music.paused) {
+      music.play();
+    } else {
+      music.pause();
+    }
+  }
+
+  // Flappy Bird Game with Image
   const canvas = document.getElementById("gameCanvas");
-  const ctx = canvas.getContext("2d");
-  let birdY = 200, birdV = 0, gravity = 0.6, jump = -10;
-  let pipes = [], frame = 0, gameOver = false;
+  if (canvas) {
+    const ctx = canvas.getContext("2d");
+    let birdY = 200, birdV = 0, gravity = 0.6, jump = -10;
+    let pipes = [], frame = 0, gameOver = false;
 
-  function drawBird() {
-    ctx.beginPath();
-    ctx.arc(50, birdY, 15, 0, Math.PI*2);
-    ctx.fillStyle = "red";
-    ctx.fill();
-    ctx.closePath();
-  }
+    let birdImg = new Image();
+    birdImg.src = "bird.jpg";
 
-  function drawPipes() {
-    for (let i=0; i<pipes.length; i++) {
-      let p = pipes[i];
-      ctx.fillStyle = "green";
-      ctx.fillRect(p.x, 0, 40, p.top);
-      ctx.fillRect(p.x, canvas.height - p.bottom, 40, p.bottom);
-    }
-  }
-
-  function updateGame() {
-    if (gameOver) return;
-    ctx.clearRect(0,0,canvas.width,canvas.height);
-    drawBird();
-    birdV += gravity;
-    birdY += birdV;
-
-    if (frame % 90 === 0) {
-      let top = Math.random()*200+50;
-      let gap = 120;
-      pipes.push({x: canvas.width, top: top, bottom: canvas.height - (top+gap)});
+    function drawBird() {
+      ctx.drawImage(birdImg, 35, birdY - 15, 30, 30);
     }
 
-    for (let i=0; i<pipes.length; i++) {
-      pipes[i].x -= 2;
-      if (pipes[i].x < -40) pipes.splice(i,1);
-      if (50 > pipes[i].x && 50 < pipes[i].x+40 && 
-         (birdY < pipes[i].top || birdY > canvas.height - pipes[i].bottom)) {
-        gameOver = true;
-        alert("Game Over!");
-        updateProgress(5);
+    function drawPipes() {
+      for (let i=0; i<pipes.length; i++) {
+        let p = pipes[i];
+        ctx.fillStyle = "green";
+        ctx.fillRect(p.x, 0, 40, p.top);
+        ctx.fillRect(p.x, canvas.height - p.bottom, 40, p.bottom);
       }
     }
-    drawPipes();
-    frame++;
-    requestAnimationFrame(updateGame);
+
+    function updateGame() {
+      if (gameOver) return;
+      ctx.clearRect(0,0,canvas.width,canvas.height);
+      drawBird();
+      birdV += gravity;
+      birdY += birdV;
+
+      if (frame % 90 === 0) {
+        let top = Math.random()*200+50;
+        let gap = 120;
+        pipes.push({x: canvas.width, top: top, bottom: canvas.height - (top+gap)});
+      }
+
+      for (let i=0; i<pipes.length; i++) {
+        pipes[i].x -= 2;
+        if (pipes[i].x < -40) pipes.splice(i,1);
+        if (50 > pipes[i].x && 50 < pipes[i].x+40 && 
+           (birdY < pipes[i].top || birdY > canvas.height - pipes[i].bottom)) {
+          gameOver = true;
+          alert("Game Over!");
+          updateProgress(5);
+        }
+      }
+      drawPipes();
+      frame++;
+      requestAnimationFrame(updateGame);
+    }
+
+    function jumpBird() {
+      birdV = jump;
+    }
+
+    document.addEventListener("keydown", e => { if(e.code==="Space") jumpBird(); });
+    canvas.addEventListener("click", jumpBird);
+
+    updateGame();
   }
-
-  function jumpBird() {
-    birdV = jump;
-  }
-
-  document.addEventListener("keydown", e => { if(e.code==="Space") jumpBird(); });
-  canvas.addEventListener("click", jumpBird);
-
-  updateGame();
 </script>
+
 </body>
 </html>
