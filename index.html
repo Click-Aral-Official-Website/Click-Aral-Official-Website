@@ -2,221 +2,337 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Click Aral Official Website</title>
-
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
+  <title>CLICK ARAL OFFICIAL WEBSITE</title>
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: Arial, sans-serif; background: #fff; color: #333; }
-
-    /* HERO */
-    .hero {
-      display: flex; flex-direction: column;
-      justify-content: center; align-items: center;
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to bottom, #87CEEB 50%, #fff 50%);
+    }
+    header {
       text-align: center;
-      height: 50vh;
-      background: linear-gradient(to bottom, rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url("mybg.jpg") no-repeat center/cover;
-      color: white; padding: 20px;
+      padding: 20px;
     }
-    .hero img {
-      width: 100px; height: 100px; border-radius: 50%;
-      margin-bottom: 15px; background: white; object-fit: cover;
+    header img {
+      width: 80px;
+      height: 80px;
     }
-    .hero h1 { font-size: 2.5rem; margin-bottom: 5px; color: #3498db; }
-    .hero p { font-size: 1.1rem; margin-bottom: 15px; }
-    .moto {
-      font-size: 1rem; background: #3498db; color: white;
-      padding: 5px 15px; border-radius: 8px; margin-bottom: 10px;
+    header h1 {
+      color: blue;
+      font-size: 40px;
     }
-    .music-btn {
-      padding: 10px 20px; border: none; background: #e67e22;
-      color: white; border-radius: 8px; cursor: pointer; font-weight: bold;
+    header p {
+      font-size: 18px;
+      font-weight: bold;
+    }
+    nav {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    nav button {
+      margin: 5px;
+      padding: 10px 20px;
+      border: none;
+      background: #4CAF50;
+      color: white;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+    nav button:hover {
+      background: #45a049;
+    }
+    .progress-container {
+      width: 80%;
+      margin: 0 auto 20px;
+      background: #ddd;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .progress-bar {
+      width: 0%;
+      height: 20px;
+      background: #4CAF50;
+      text-align: center;
+      color: white;
+      font-size: 12px;
+    }
+    .modules {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      padding: 20px;
+    }
+    .module {
+      padding: 20px;
+      border-radius: 15px;
+      color: white;
+      cursor: pointer;
+      text-align: center;
+      font-size: 18px;
+      transition: transform 0.2s;
+    }
+    .module:hover {
+      transform: scale(1.05);
+    }
+    .blue { background: #2196F3; }
+    .green { background: #4CAF50; }
+    .orange { background: #FF9800; }
+    .purple { background: #9C27B0; }
+
+    .quiz, .game, .lesson {
+      display: none;
+      padding: 20px;
+      background: #fff;
+      border-radius: 15px;
+      margin: 20px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    .quiz h2, .game h2, .lesson h2 {
+      margin-top: 0;
+    }
+    .quiz button, .lesson button {
+      margin-top: 10px;
+      padding: 10px;
+      background: #2196F3;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+    .quiz button:hover, .lesson button:hover {
+      background: #0b7dda;
     }
 
-    /* CONTENT */
-    .content { background: white; padding: 50px 20px; }
-    .content h2 { text-align: center; margin-bottom: 35px; font-size: 2rem; font-weight: bold; }
-    .box-container {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 25px; max-width: 1100px; margin: 0 auto;
-    }
-    .box {
-      border-radius: 15px; padding: 30px 20px; color: white;
-      text-align: center; cursor: pointer; min-height: 200px;
-      display: flex; flex-direction: column; justify-content: center;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
-    .box:hover { transform: translateY(-5px); box-shadow: 0 6px 12px rgba(0,0,0,0.2); }
-    .box i { font-size: 2rem; margin-bottom: 12px; }
-    .box h3 { margin-bottom: 10px; font-size: 1.3rem; }
-    .blue { background: #3498db; }
-    .orange { background: #e67e22; }
-    .green { background: #2ecc71; }
-    .purple { background: #9b59b6; }
-
-    /* MODAL */
-    .modal {
-      display: none; position: fixed; top: 0; left: 0;
-      width: 100%; height: 100%; background: rgba(0,0,0,0.7);
-      justify-content: center; align-items: center; z-index: 999;
-    }
-    .modal-content {
-      background: #fff; padding: 20px; border-radius: 10px;
-      max-width: 700px; width: 90%; text-align: left;
-      position: relative; max-height: 90vh; overflow-y: auto;
-    }
-    .close { position: absolute; top: 10px; right: 15px; font-size: 22px; cursor: pointer; }
-    .nav-btn {
-      padding: 8px 16px; background: #3498db; color: white;
-      border: none; border-radius: 6px; cursor: pointer; margin-top: 15px;
+    canvas {
+      background: #eee;
+      display: block;
+      margin: auto;
+      border: 2px solid #333;
     }
 
-    /* GAME */
-    #gameCanvas { background: #70c5ce; display: block; margin: 15px auto; border-radius: 10px; }
-
-    /* FOOTER */
-    footer { text-align: center; padding: 20px; font-size: 0.9rem; background: #f4f4f4; margin-top: 30px; }
-    footer a { color: #3498db; text-decoration: none; }
-    footer a:hover { text-decoration: underline; }
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #f9f9f9;
+    }
+    footer img {
+      width: 60px;
+      height: 60px;
+    }
   </style>
 </head>
 <body>
 
-  <!-- HERO -->
-  <section class="hero">
-    <img src="mylogo.png" alt="Logo">
-    <h1>CLICK ARAL OFFICIAL WEBSITE</h1>
-    <div class="moto">MODULE EXAMPLE SOFTWARE BASIC</div>
-    <p>Learn • Practice • Play</p>
-    <button class="music-btn" onclick="toggleMusic()">Play / Pause Music</button>
-  </section>
+<header>
+  <img src="logo.png" alt="Logo">
+  <h1>CLICK ARAL OFFICIAL WEBSITE</h1>
+  <p>MODULE EXAMPLE SOFTWARE BASIC</p>
+</header>
 
-  <!-- CONTENT -->
-  <section class="content">
-    <h2>Our Learning Modules</h2>
-    <div class="box-container">
-      <div class="box blue" onclick="openModal('pagsulat')">
-        <i class="fa-solid fa-pen"></i>
-        <h3>Pagsulat Module</h3>
-        <p>Answer the writing activity.</p>
-      </div>
-      <div class="box orange" onclick="openModal('css')">
-        <i class="fa-solid fa-book-open"></i>
-        <h3>CSS NC2 Module</h3>
-        <p>Software Basics (5 Lessons)</p>
-      </div>
-      <div class="box green" onclick="openModal('quiz')">
-        <i class="fa-solid fa-question"></i>
-        <h3>ICT Quiz Game</h3>
-        <p>Answer ICT Questions.</p>
-      </div>
-      <div class="box purple" onclick="openModal('game')">
-        <i class="fa-solid fa-gamepad"></i>
-        <h3>Mini Game</h3>
-        <p>Floppy Bird</p>
-      </div>
-    </div>
-  </section>
+<nav>
+  <button onclick="showSection('home')">Home</button>
+  <button onclick="showSection('dashboard')">Dashboard</button>
+</nav>
 
-  <!-- MODALS -->
-  <div id="pagsulat" class="modal">
-    <div class="modal-content">
-      <span class="close" onclick="closeModal('pagsulat')">&times;</span>
-      <h2>Pagsulat Module</h2>
-      <p><b>Tanong:</b> Ano ang kahulugan ng pagsulat?</p>
-      <textarea placeholder="Isulat ang sagot dito..." style="width:100%;height:100px;margin-top:10px;"></textarea>
-      <button style="margin-top:10px;padding:8px 16px;">Submit</button>
-    </div>
+<div class="progress-container">
+  <div class="progress-bar" id="progressBar">0%</div>
+</div>
+
+<section id="home">
+  <div class="modules">
+    <div class="module blue" onclick="openSection('pagsulatQuiz')">PAGSULAT MODULE</div>
+    <div class="module green" onclick="openSection('cssQuiz')">CSS NC 2 MODULE</div>
+    <div class="module orange" onclick="openSection('flappyGame')">MINI GAME MODULE</div>
+    <div class="module purple" onclick="openSection('lessonModule')">MODULE EXAMPLE SOFTWARE BASIC</div>
   </div>
+</section>
 
-  <div id="css" class="modal">
-    <div class="modal-content">
-      <span class="close" onclick="closeModal('css')">&times;</span>
-      <h2>CSS NC2 Module - Software Basics</h2>
-      <div id="lesson-content"></div>
-      <div style="margin-top:15px;">
-        <button class="nav-btn" onclick="prevLesson()">Back</button>
-        <button class="nav-btn" onclick="nextLesson()">Next</button>
-      </div>
-    </div>
-  </div>
+<section id="dashboard" style="display:none;">
+  <h2 style="text-align:center;">Dashboard</h2>
+  <p style="text-align:center;">Progress and Points will show here.</p>
+  <p style="text-align:center;" id="scoreBoard">Total Points: 0</p>
+</section>
 
-  <div id="quiz" class="modal">
-    <div class="modal-content">
-      <span class="close" onclick="closeModal('quiz')">&times;</span>
-      <h2>ICT Quiz Game</h2>
-      <p><b>Q1:</b> Ano ang tawag sa utak ng computer?  
-      <br>A. CPU  
-      <br>B. GPU  
-      <br>C. RAM</p>
-      <p><b>Q2:</b> Ano ang ibig sabihin ng HTML?  
-      <br>A. Hyper Text Markup Language  
-      <br>B. High Tech Machine Learning  
-      <br>C. Hyperlink Test Model</p>
-    </div>
-  </div>
+<!-- Pagsulat Module -->
+<div class="quiz" id="pagsulatQuiz">
+  <h2>Pagsulat Module</h2>
+  <p>Mag-type ng iyong sagot sa ibaba:</p>
+  <textarea id="pagsulatAnswer" rows="5" cols="40" placeholder="Isulat ang sagot mo dito..."></textarea><br>
+  <button onclick="submitPagsulat()">Submit</button>
+  <p id="pagsulatResult"></p>
+</div>
 
-  <div id="game" class="modal">
-    <div class="modal-content">
-      <span class="close" onclick="closeModal('game')">&times;</span>
-      <h2>Mini Game: Floppy Bird</h2>
-      <canvas id="gameCanvas" width="300" height="400"></canvas>
-      <p>Press SPACE to flap!</p>
-    </div>
-  </div>
+<!-- CSS NC2 Module -->
+<div class="quiz" id="cssQuiz">
+  <h2>CSS NC2 Module - Identify Motherboards</h2>
+  <form id="cssForm">
+    <p>1. Ano ang pangunahing circuit board ng computer?</p>
+    <label><input type="radio" name="q1" value="correct"> Motherboard</label><br>
+    <label><input type="radio" name="q1" value="wrong"> RAM</label><br>
+    <label><input type="radio" name="q1" value="wrong"> CPU</label><br>
 
-  <!-- FOOTER -->
-  <footer>
-    <p>Click Aral — Learning site demo. Contact: <a href="mailto:xxknx@gmail.com">xxknx@gmail.com</a></p>
-  </footer>
+    <p>2. Ano ang nag-iimbak ng temporary data?</p>
+    <label><input type="radio" name="q2" value="wrong"> SSD</label><br>
+    <label><input type="radio" name="q2" value="correct"> RAM</label><br>
+    <label><input type="radio" name="q2" value="wrong"> GPU</label><br>
 
-  <!-- MUSIC -->
-  <audio id="bg-music" loop>
-    <source src="music.mp3" type="audio/mpeg">
-  </audio>
+    <p>3. Ano ang tawag sa brain ng computer?</p>
+    <label><input type="radio" name="q3" value="correct"> CPU</label><br>
+    <label><input type="radio" name="q3" value="wrong"> HDD</label><br>
+    <label><input type="radio" name="q3" value="wrong"> PSU</label><br>
 
-  <script>
-    /* Music */
-    function toggleMusic() {
-      const music = document.getElementById("bg-music");
-      if (music.paused) music.play(); else music.pause();
+    <p>4. Ano ang storage device?</p>
+    <label><input type="radio" name="q4" value="wrong"> Monitor</label><br>
+    <label><input type="radio" name="q4" value="correct"> SSD</label><br>
+    <label><input type="radio" name="q4" value="wrong"> Keyboard</label><br>
+
+    <p>5. Ano ang nagkokonekta ng lahat ng components?</p>
+    <label><input type="radio" name="q5" value="correct"> Motherboard</label><br>
+    <label><input type="radio" name="q5" value="wrong"> PSU</label><br>
+    <label><input type="radio" name="q5" value="wrong"> Mouse</label><br>
+
+    <button type="button" onclick="submitCssQuiz()">Submit</button>
+  </form>
+  <p id="cssResult"></p>
+</div>
+
+<!-- Mini Game Flappy Bird -->
+<div class="game" id="flappyGame">
+  <h2>Mini Game: Flappy Bird Clone</h2>
+  <canvas id="gameCanvas" width="320" height="480"></canvas>
+  <p style="text-align:center;">Press SPACE or click to jump!</p>
+</div>
+
+<!-- Lesson Module -->
+<div class="lesson" id="lessonModule">
+  <h2>Software Basics</h2>
+  <h3>Part 2: System Software vs Application Software</h3>
+  <ul>
+    <li>System Software: OS, Drivers, Utilities</li>
+    <li>Application Software: Productivity, Creative, Communication</li>
+  </ul>
+  <h3>Part 3: Examples</h3>
+  <p>Windows, macOS, Linux, Word Processors, Browsers, etc.</p>
+  <h3>Part 4: Practical Activity</h3>
+  <p>Creating, saving, formatting documents.</p>
+  <h3>Part 5: Quiz/Game</h3>
+  <p>Drag-and-drop style matching (coming soon).</p>
+  <button onclick="completeLesson()">Mark as Complete</button>
+  <p id="lessonResult"></p>
+</div>
+
+<footer>
+  <img src="logo.png" alt="Logo">
+  <p>&copy; 2025 CLICK ARAL</p>
+</footer>
+
+<script>
+  let points = 0;
+
+  function updateProgress(addPoints) {
+    points += addPoints;
+    if (points > 100) points = 100;
+    document.getElementById("scoreBoard").innerText = "Total Points: " + points;
+    document.getElementById("progressBar").style.width = points + "%";
+    document.getElementById("progressBar").innerText = points + "%";
+  }
+
+  function showSection(section) {
+    document.getElementById("home").style.display = "none";
+    document.getElementById("dashboard").style.display = "none";
+    document.getElementById(section).style.display = "block";
+  }
+
+  function openSection(id) {
+    document.querySelectorAll(".quiz, .game, .lesson").forEach(sec => sec.style.display = "none");
+    document.getElementById(id).style.display = "block";
+  }
+
+  function submitPagsulat() {
+    let answer = document.getElementById("pagsulatAnswer").value;
+    if (answer.trim() !== "") {
+      document.getElementById("pagsulatResult").innerText = "Sagot na-submit!";
+      updateProgress(10);
+    } else {
+      document.getElementById("pagsulatResult").innerText = "Pakisagot muna bago i-submit.";
+    }
+  }
+
+  function submitCssQuiz() {
+    let score = 0;
+    const form = document.getElementById("cssForm");
+    for (let i=1; i<=5; i++) {
+      let ans = form["q"+i].value;
+      if (ans === "correct") score++;
+    }
+    document.getElementById("cssResult").innerText = "Score: " + score + "/5";
+    updateProgress(score * 10);
+  }
+
+  function completeLesson() {
+    document.getElementById("lessonResult").innerText = "Lesson marked as complete!";
+    updateProgress(20);
+  }
+
+  // Flappy Bird Game
+  const canvas = document.getElementById("gameCanvas");
+  const ctx = canvas.getContext("2d");
+  let birdY = 200, birdV = 0, gravity = 0.6, jump = -10;
+  let pipes = [], frame = 0, gameOver = false;
+
+  function drawBird() {
+    ctx.beginPath();
+    ctx.arc(50, birdY, 15, 0, Math.PI*2);
+    ctx.fillStyle = "red";
+    ctx.fill();
+    ctx.closePath();
+  }
+
+  function drawPipes() {
+    for (let i=0; i<pipes.length; i++) {
+      let p = pipes[i];
+      ctx.fillStyle = "green";
+      ctx.fillRect(p.x, 0, 40, p.top);
+      ctx.fillRect(p.x, canvas.height - p.bottom, 40, p.bottom);
+    }
+  }
+
+  function updateGame() {
+    if (gameOver) return;
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    drawBird();
+    birdV += gravity;
+    birdY += birdV;
+
+    if (frame % 90 === 0) {
+      let top = Math.random()*200+50;
+      let gap = 120;
+      pipes.push({x: canvas.width, top: top, bottom: canvas.height - (top+gap)});
     }
 
-    /* Modal */
-    function openModal(id) { document.getElementById(id).style.display = "flex"; if (id==="css") loadLesson(); }
-    function closeModal(id) { document.getElementById(id).style.display = "none"; }
+    for (let i=0; i<pipes.length; i++) {
+      pipes[i].x -= 2;
+      if (pipes[i].x < -40) pipes.splice(i,1);
+      if (50 > pipes[i].x && 50 < pipes[i].x+40 && 
+         (birdY < pipes[i].top || birdY > canvas.height - pipes[i].bottom)) {
+        gameOver = true;
+        alert("Game Over!");
+        updateProgress(5);
+      }
+    }
+    drawPipes();
+    frame++;
+    requestAnimationFrame(updateGame);
+  }
 
-    /* Lessons Data (5 pages with choices) */
-    const lessons = [
-      `<h3>Part 1: Introduction</h3><p>Overview of software types and uses.</p><p>Which is a type of software?<br>A. Hardware<br>B. System Software<br>C. Mouse</p>`,
-      `<h3>Part 2: System vs. Application Software</h3><ul><li>System: OS, Device Drivers, Utilities</li><li>Application: Productivity, Creative, Communication</li></ul><p>Which is an application software?<br>A. Windows<br>B. Microsoft Word<br>C. Device Driver</p>`,
-      `<h3>Part 3: Examples</h3><ul><li>OS: Windows, macOS, Linux</li><li>Word Processors: Word, Docs</li><li>Browsers: Chrome, Firefox</li></ul><p>Which is a browser?<br>A. Chrome<br>B. MS Word<br>C. Photoshop</p>`,
-      `<h3>Part 4: Practical Activity</h3><ol><li>Create a document</li><li>Save and format</li><li>Insert images</li></ol><p>Which step is NOT formatting?<br>A. Bold text<br>B. Insert image<br>C. Change font size</p>`,
-      `<h3>Part 5: Quiz/Game</h3><p>Match software:<br>System Software = OS<br>Application Software = Word Processor</p><p>Which is system software?<br>A. Antivirus<br>B. MS PowerPoint<br>C. Facebook</p>`
-    ];
-    let currentLesson = 0;
-    function loadLesson(){ document.getElementById("lesson-content").innerHTML = lessons[currentLesson]; }
-    function nextLesson(){ if(currentLesson < lessons.length-1) currentLesson++; loadLesson(); }
-    function prevLesson(){ if(currentLesson > 0) currentLesson--; loadLesson(); }
+  function jumpBird() {
+    birdV = jump;
+  }
 
-    /* Game (Floppy Bird) */
-    const canvas = document.getElementById("gameCanvas");
-    const ctx = canvas.getContext("2d");
-    const birdImg = new Image(); birdImg.src = "bird.png"; // palitan ng sariling pic
-    let bird={x:50,y:150,w:30,h:30,gravity:1.5,lift:-20,velocity:0};
-    let pipes=[],frame=0,score=0,gameRunning=false;
-    function drawBird(){ if(birdImg.complete&&birdImg.naturalWidth>0){ctx.drawImage(birdImg,bird.x,bird.y,bird.w,bird.h);}else{ctx.fillStyle="yellow";ctx.fillRect(bird.x,bird.y,bird.w,bird.h);} }
-    function drawPipes(){ for(let p of pipes){ctx.fillStyle="green";ctx.fillRect(p.x,0,p.w,p.top);ctx.fillRect(p.x,canvas.height-p.bottom,p.w,p.bottom);} }
-    function update(){ if(!gameRunning)return; ctx.clearRect(0,0,canvas.width,canvas.height); bird.velocity+=bird.gravity; bird.y+=bird.velocity;
-      if(bird.y+bird.h>canvas.height||bird.y<0) resetGame();
-      if(frame%90===0){let gap=100;let top=Math.random()*(canvas.height-gap-40)+20;let bottom=canvas.height-top-gap;pipes.push({x:canvas.width,w:30,top:top,bottom:bottom});}
-      for(let i=0;i<pipes.length;i++){let p=pipes[i];p.x-=2;if(bird.x<p.x+p.w&&bird.x+bird.w>p.x&&(bird.y<p.top||bird.y+bird.h>canvas.height-p.bottom)) resetGame(); if(p.x+p.w<0){pipes.splice(i,1);score++;}}
-      drawPipes(); drawBird(); ctx.fillStyle="white"; ctx.font="20px Arial"; ctx.fillText("Score: "+score,10,25); frame++; requestAnimationFrame(update);}
-    function resetGame(){bird.y=150;bird.velocity=0;pipes=[];score=0;frame=0;}
-    document.addEventListener("keydown",e=>{if(e.code==="Space"){bird.velocity=bird.lift;if(!gameRunning){gameRunning=true;update();}}});
-  </script>
+  document.addEventListener("keydown", e => { if(e.code==="Space") jumpBird(); });
+  canvas.addEventListener("click", jumpBird);
+
+  updateGame();
+</script>
 </body>
 </html>
