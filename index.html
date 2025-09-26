@@ -10,104 +10,48 @@
 
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: Arial, sans-serif; background: #fff; color: #333; }
 
-    body {
-      font-family: Arial, sans-serif;
-      color: #333;
-      background: #fff;
-    }
-
-    /* HERO (half dark background) */
+    /* HERO */
     .hero {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
+      display: flex; flex-direction: column;
+      justify-content: center; align-items: center;
       text-align: center;
       height: 50vh;
       background: linear-gradient(to bottom, rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url("mybg.jpg") no-repeat center/cover;
-      color: white;
-      padding: 20px;
+      color: white; padding: 20px;
     }
-
     .hero img {
-      width: 100px;
-      height: 100px;
-      border-radius: 50%;
-      margin-bottom: 15px;
-      background: white;
-      object-fit: cover;
+      width: 100px; height: 100px; border-radius: 50%;
+      margin-bottom: 15px; background: white; object-fit: cover;
     }
-
-    .hero h1 {
-      font-size: 2.5rem;
-      margin-bottom: 10px;
+    .hero h1 { font-size: 2.5rem; margin-bottom: 5px; color: #3498db; }
+    .hero p { font-size: 1.1rem; margin-bottom: 15px; }
+    .moto {
+      font-size: 1rem; background: #3498db; color: white;
+      padding: 5px 15px; border-radius: 8px; margin-bottom: 10px;
     }
-
-    .hero p {
-      font-size: 1.1rem;
-      margin-bottom: 15px;
-    }
-
     .music-btn {
-      padding: 10px 20px;
-      border: none;
-      background: #3498db;
-      color: white;
-      border-radius: 8px;
-      cursor: pointer;
-      font-weight: bold;
+      padding: 10px 20px; border: none; background: #e67e22;
+      color: white; border-radius: 8px; cursor: pointer; font-weight: bold;
     }
 
     /* CONTENT */
-    .content {
-      background: white;
-      padding: 50px 20px;
-    }
-
-    .content h2 {
-      text-align: center;
-      margin-bottom: 35px;
-      font-size: 2rem;
-      font-weight: bold;
-    }
-
+    .content { background: white; padding: 50px 20px; }
+    .content h2 { text-align: center; margin-bottom: 35px; font-size: 2rem; font-weight: bold; }
     .box-container {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 25px;
-      max-width: 1100px;
-      margin: 0 auto;
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 25px; max-width: 1100px; margin: 0 auto;
     }
-
     .box {
-      border-radius: 15px;
-      padding: 30px 20px;
-      color: white;
-      text-align: center;
-      cursor: pointer;
-      min-height: 200px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
+      border-radius: 15px; padding: 30px 20px; color: white;
+      text-align: center; cursor: pointer; min-height: 200px;
+      display: flex; flex-direction: column; justify-content: center;
       transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
-
-    .box:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 6px 12px rgba(0,0,0,0.2);
-    }
-
-    .box i {
-      font-size: 2rem;
-      margin-bottom: 12px;
-    }
-
-    .box h3 {
-      margin-bottom: 10px;
-      font-size: 1.3rem;
-    }
-
+    .box:hover { transform: translateY(-5px); box-shadow: 0 6px 12px rgba(0,0,0,0.2); }
+    .box i { font-size: 2rem; margin-bottom: 12px; }
+    .box h3 { margin-bottom: 10px; font-size: 1.3rem; }
     .blue { background: #3498db; }
     .orange { background: #e67e22; }
     .green { background: #2ecc71; }
@@ -115,51 +59,26 @@
 
     /* MODAL */
     .modal {
-      display: none;
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: rgba(0,0,0,0.7);
-      justify-content: center;
-      align-items: center;
-      z-index: 999;
+      display: none; position: fixed; top: 0; left: 0;
+      width: 100%; height: 100%; background: rgba(0,0,0,0.7);
+      justify-content: center; align-items: center; z-index: 999;
     }
-
     .modal-content {
-      background: #fff;
-      padding: 20px;
-      border-radius: 10px;
-      max-width: 600px;
-      width: 90%;
-      text-align: center;
-      position: relative;
+      background: #fff; padding: 20px; border-radius: 10px;
+      max-width: 700px; width: 90%; text-align: left;
+      position: relative; max-height: 90vh; overflow-y: auto;
+    }
+    .close { position: absolute; top: 10px; right: 15px; font-size: 22px; cursor: pointer; }
+    .nav-btn {
+      padding: 8px 16px; background: #3498db; color: white;
+      border: none; border-radius: 6px; cursor: pointer; margin-top: 15px;
     }
 
-    .close {
-      position: absolute;
-      top: 10px;
-      right: 15px;
-      font-size: 22px;
-      cursor: pointer;
-    }
-
-    /* GAME CANVAS */
-    #gameCanvas {
-      background: #70c5ce;
-      display: block;
-      margin: 15px auto;
-      border-radius: 10px;
-    }
+    /* GAME */
+    #gameCanvas { background: #70c5ce; display: block; margin: 15px auto; border-radius: 10px; }
 
     /* FOOTER */
-    footer {
-      text-align: center;
-      padding: 20px;
-      font-size: 0.9rem;
-      background: #f4f4f4;
-      margin-top: 30px;
-    }
-
+    footer { text-align: center; padding: 20px; font-size: 0.9rem; background: #f4f4f4; margin-top: 30px; }
     footer a { color: #3498db; text-decoration: none; }
     footer a:hover { text-decoration: underline; }
   </style>
@@ -170,6 +89,7 @@
   <section class="hero">
     <img src="mylogo.png" alt="Logo">
     <h1>CLICK ARAL OFFICIAL WEBSITE</h1>
+    <div class="moto">MODULE EXAMPLE SOFTWARE BASIC</div>
     <p>Learn • Practice • Play</p>
     <button class="music-btn" onclick="toggleMusic()">Play / Pause Music</button>
   </section>
@@ -178,31 +98,26 @@
   <section class="content">
     <h2>Our Learning Modules</h2>
     <div class="box-container">
-
       <div class="box blue" onclick="openModal('pagsulat')">
         <i class="fa-solid fa-pen"></i>
         <h3>Pagsulat Module</h3>
-        <p>Answer the writing question.</p>
+        <p>Answer the writing activity.</p>
       </div>
-
       <div class="box orange" onclick="openModal('css')">
         <i class="fa-solid fa-book-open"></i>
         <h3>CSS NC2 Module</h3>
-        <p>Identify Motherboards and ICT parts.</p>
+        <p>Software Basics (5 Lessons)</p>
       </div>
-
       <div class="box green" onclick="openModal('quiz')">
         <i class="fa-solid fa-question"></i>
         <h3>ICT Quiz Game</h3>
-        <p>Interactive multiple-choice quiz.</p>
+        <p>Answer ICT Questions.</p>
       </div>
-
       <div class="box purple" onclick="openModal('game')">
         <i class="fa-solid fa-gamepad"></i>
         <h3>Mini Game</h3>
-        <p>Play Floppy Bird with custom bird image.</p>
+        <p>Floppy Bird</p>
       </div>
-
     </div>
   </section>
 
@@ -211,8 +126,8 @@
     <div class="modal-content">
       <span class="close" onclick="closeModal('pagsulat')">&times;</span>
       <h2>Pagsulat Module</h2>
-      <p><b>Question:</b> Ano ang kahulugan ng pagsulat?</p>
-      <textarea placeholder="Type your answer here..." style="width:100%;height:100px;margin-top:10px;"></textarea>
+      <p><b>Tanong:</b> Ano ang kahulugan ng pagsulat?</p>
+      <textarea placeholder="Isulat ang sagot dito..." style="width:100%;height:100px;margin-top:10px;"></textarea>
       <button style="margin-top:10px;padding:8px 16px;">Submit</button>
     </div>
   </div>
@@ -220,13 +135,12 @@
   <div id="css" class="modal">
     <div class="modal-content">
       <span class="close" onclick="closeModal('css')">&times;</span>
-      <h2>CSS NC2 Module</h2>
-      <p><b>Activity:</b> Identify these Motherboards</p>
-      <ul style="text-align:left;margin-top:10px;">
-        <li>ATX</li>
-        <li>Micro ATX</li>
-        <li>Mini ITX</li>
-      </ul>
+      <h2>CSS NC2 Module - Software Basics</h2>
+      <div id="lesson-content"></div>
+      <div style="margin-top:15px;">
+        <button class="nav-btn" onclick="prevLesson()">Back</button>
+        <button class="nav-btn" onclick="nextLesson()">Next</button>
+      </div>
     </div>
   </div>
 
@@ -234,8 +148,14 @@
     <div class="modal-content">
       <span class="close" onclick="closeModal('quiz')">&times;</span>
       <h2>ICT Quiz Game</h2>
-      <p><b>Q1:</b> Ano ang tawag sa utak ng computer?</p>
-      <p><b>Q2:</b> Ano ang ibig sabihin ng HTML?</p>
+      <p><b>Q1:</b> Ano ang tawag sa utak ng computer?  
+      <br>A. CPU  
+      <br>B. GPU  
+      <br>C. RAM</p>
+      <p><b>Q2:</b> Ano ang ibig sabihin ng HTML?  
+      <br>A. Hyper Text Markup Language  
+      <br>B. High Tech Machine Learning  
+      <br>C. Hyperlink Test Model</p>
     </div>
   </div>
 
@@ -250,9 +170,7 @@
 
   <!-- FOOTER -->
   <footer>
-    <p>Click Aral — Learning site demo. Contact: 
-      <a href="mailto:xxknx@gmail.com">xxknx@gmail.com</a>
-    </p>
+    <p>Click Aral — Learning site demo. Contact: <a href="mailto:xxknx@gmail.com">xxknx@gmail.com</a></p>
   </footer>
 
   <!-- MUSIC -->
@@ -264,109 +182,41 @@
     /* Music */
     function toggleMusic() {
       const music = document.getElementById("bg-music");
-      if (music.paused) music.play();
-      else music.pause();
+      if (music.paused) music.play(); else music.pause();
     }
 
     /* Modal */
-    function openModal(id) {
-      document.getElementById(id).style.display = "flex";
-    }
-    function closeModal(id) {
-      document.getElementById(id).style.display = "none";
-    }
+    function openModal(id) { document.getElementById(id).style.display = "flex"; if (id==="css") loadLesson(); }
+    function closeModal(id) { document.getElementById(id).style.display = "none"; }
 
-    /* Floppy Bird Game */
+    /* Lessons Data (5 pages with choices) */
+    const lessons = [
+      `<h3>Part 1: Introduction</h3><p>Overview of software types and uses.</p><p>Which is a type of software?<br>A. Hardware<br>B. System Software<br>C. Mouse</p>`,
+      `<h3>Part 2: System vs. Application Software</h3><ul><li>System: OS, Device Drivers, Utilities</li><li>Application: Productivity, Creative, Communication</li></ul><p>Which is an application software?<br>A. Windows<br>B. Microsoft Word<br>C. Device Driver</p>`,
+      `<h3>Part 3: Examples</h3><ul><li>OS: Windows, macOS, Linux</li><li>Word Processors: Word, Docs</li><li>Browsers: Chrome, Firefox</li></ul><p>Which is a browser?<br>A. Chrome<br>B. MS Word<br>C. Photoshop</p>`,
+      `<h3>Part 4: Practical Activity</h3><ol><li>Create a document</li><li>Save and format</li><li>Insert images</li></ol><p>Which step is NOT formatting?<br>A. Bold text<br>B. Insert image<br>C. Change font size</p>`,
+      `<h3>Part 5: Quiz/Game</h3><p>Match software:<br>System Software = OS<br>Application Software = Word Processor</p><p>Which is system software?<br>A. Antivirus<br>B. MS PowerPoint<br>C. Facebook</p>`
+    ];
+    let currentLesson = 0;
+    function loadLesson(){ document.getElementById("lesson-content").innerHTML = lessons[currentLesson]; }
+    function nextLesson(){ if(currentLesson < lessons.length-1) currentLesson++; loadLesson(); }
+    function prevLesson(){ if(currentLesson > 0) currentLesson--; loadLesson(); }
+
+    /* Game (Floppy Bird) */
     const canvas = document.getElementById("gameCanvas");
     const ctx = canvas.getContext("2d");
-
-    const birdImg = new Image();
-    birdImg.src = "bird.png"; // <-- I-upload mo yung picture ng ibon
-
-    let bird = { x: 50, y: 150, w: 30, h: 30, gravity: 1.5, lift: -20, velocity: 0 };
-    let pipes = [];
-    let frame = 0;
-    let score = 0;
-    let gameRunning = false;
-
-    function drawBird() {
-      if (birdImg.complete && birdImg.naturalWidth > 0) {
-        ctx.drawImage(birdImg, bird.x, bird.y, bird.w, bird.h);
-      } else {
-        ctx.fillStyle = "yellow";
-        ctx.fillRect(bird.x, bird.y, bird.w, bird.h);
-      }
-    }
-
-    function drawPipes() {
-      for (let i = 0; i < pipes.length; i++) {
-        let p = pipes[i];
-        ctx.fillStyle = "green";
-        ctx.fillRect(p.x, 0, p.w, p.top);
-        ctx.fillRect(p.x, canvas.height - p.bottom, p.w, p.bottom);
-      }
-    }
-
-    function update() {
-      if (!gameRunning) return;
-
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-      bird.velocity += bird.gravity;
-      bird.y += bird.velocity;
-
-      if (bird.y + bird.h > canvas.height || bird.y < 0) resetGame();
-
-      if (frame % 90 === 0) {
-        let gap = 100;
-        let top = Math.random() * (canvas.height - gap - 40) + 20;
-        let bottom = canvas.height - top - gap;
-        pipes.push({ x: canvas.width, w: 30, top: top, bottom: bottom });
-      }
-
-      for (let i = 0; i < pipes.length; i++) {
-        let p = pipes[i];
-        p.x -= 2;
-
-        if (bird.x < p.x + p.w && bird.x + bird.w > p.x && (bird.y < p.top || bird.y + bird.h > canvas.height - p.bottom)) {
-          resetGame();
-        }
-
-        if (p.x + p.w < 0) {
-          pipes.splice(i, 1);
-          score++;
-        }
-      }
-
-      drawPipes();
-      drawBird();
-
-      ctx.fillStyle = "white";
-      ctx.font = "20px Arial";
-      ctx.fillText("Score: " + score, 10, 25);
-
-      frame++;
-      requestAnimationFrame(update);
-    }
-
-    function resetGame() {
-      bird.y = 150;
-      bird.velocity = 0;
-      pipes = [];
-      score = 0;
-      frame = 0;
-    }
-
-    document.addEventListener("keydown", function(e) {
-      if (e.code === "Space") {
-        bird.velocity = bird.lift;
-        if (!gameRunning) {
-          gameRunning = true;
-          update();
-        }
-      }
-    });
+    const birdImg = new Image(); birdImg.src = "bird.png"; // palitan ng sariling pic
+    let bird={x:50,y:150,w:30,h:30,gravity:1.5,lift:-20,velocity:0};
+    let pipes=[],frame=0,score=0,gameRunning=false;
+    function drawBird(){ if(birdImg.complete&&birdImg.naturalWidth>0){ctx.drawImage(birdImg,bird.x,bird.y,bird.w,bird.h);}else{ctx.fillStyle="yellow";ctx.fillRect(bird.x,bird.y,bird.w,bird.h);} }
+    function drawPipes(){ for(let p of pipes){ctx.fillStyle="green";ctx.fillRect(p.x,0,p.w,p.top);ctx.fillRect(p.x,canvas.height-p.bottom,p.w,p.bottom);} }
+    function update(){ if(!gameRunning)return; ctx.clearRect(0,0,canvas.width,canvas.height); bird.velocity+=bird.gravity; bird.y+=bird.velocity;
+      if(bird.y+bird.h>canvas.height||bird.y<0) resetGame();
+      if(frame%90===0){let gap=100;let top=Math.random()*(canvas.height-gap-40)+20;let bottom=canvas.height-top-gap;pipes.push({x:canvas.width,w:30,top:top,bottom:bottom});}
+      for(let i=0;i<pipes.length;i++){let p=pipes[i];p.x-=2;if(bird.x<p.x+p.w&&bird.x+bird.w>p.x&&(bird.y<p.top||bird.y+bird.h>canvas.height-p.bottom)) resetGame(); if(p.x+p.w<0){pipes.splice(i,1);score++;}}
+      drawPipes(); drawBird(); ctx.fillStyle="white"; ctx.font="20px Arial"; ctx.fillText("Score: "+score,10,25); frame++; requestAnimationFrame(update);}
+    function resetGame(){bird.y=150;bird.velocity=0;pipes=[];score=0;frame=0;}
+    document.addEventListener("keydown",e=>{if(e.code==="Space"){bird.velocity=bird.lift;if(!gameRunning){gameRunning=true;update();}}});
   </script>
-
 </body>
-          </html>
+</html>
